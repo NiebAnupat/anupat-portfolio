@@ -40,14 +40,10 @@ export const Footer: React.FC = () => {
         <div className="rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-10 shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-medium text-blue-600 mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                <span>{nav.contact}</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                 {contactSection.title}
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-xl leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-[65ch] leading-relaxed">
                 {contactSection.subtitle}
               </p>
 
@@ -57,7 +53,7 @@ export const Footer: React.FC = () => {
                   {hero.email}
                 </span>
                 <span className="text-slate-300">•</span>
-                <span className="inline-flex items-center gap-1.5 font-mono">
+                <span className="inline-flex items-center gap-1.5 font-mono tabular-nums">
                   <Phone className="w-4 h-4 text-blue-600" />
                   {hero.phone}
                 </span>
@@ -97,7 +93,7 @@ export const Footer: React.FC = () => {
               {/* Call Phone Link */}
               <a
                 href={`tel:${hero.phone.replace(/-/g, '')}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100/70 hover:border-slate-400 transition-all shadow-xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100/70 hover:border-slate-400 transition-all shadow-xs tabular-nums"
               >
                 <Phone className="w-4 h-4 text-blue-600" />
                 <span>{contactSection.callPhone}</span>
@@ -112,7 +108,7 @@ export const Footer: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Brand & Copyright */}
           <div className="flex items-center gap-2.5 text-xs text-slate-500">
-            <div className="w-6 h-6 rounded-md bg-slate-900 text-white flex items-center justify-center font-mono text-[10px] font-bold">
+            <div className="w-6 h-6 rounded-md bg-slate-900 text-white flex items-center justify-center font-mono text-xs font-bold">
               <Terminal className="w-3.5 h-3.5" />
             </div>
             <span className="font-semibold text-slate-800">{hero.name}</span>
@@ -176,4 +172,3 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
-

@@ -42,11 +42,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     <article
       className={`group bg-white rounded-xl border border-slate-200 hover:border-blue-500/40 transition-all shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)] flex flex-col justify-between overflow-hidden ${className}`}
     >
-      {/* Top Card Accent Bar for Featured Flagship Systems */}
-      {project.featured && (
-        <div className="h-1 w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500" />
-      )}
-
       <div className="p-5 sm:p-6 flex-1 flex flex-col">
         {/* Card Header: Category Badge, Featured Tag & Individual Dual-Lens Toggle */}
         <div className="flex flex-wrap items-center justify-between gap-2.5 pb-4 mb-4 border-b border-slate-200/80">
@@ -170,10 +165,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         ) : (
           /* Mode B: System Architecture View (Tech Lead / Engineering Lens) */
           <div className="flex-1 flex flex-col justify-between space-y-4">
-            {/* Architectural Overview */}
+            {/* Architectural Overview (tinted deep indigo text on indigo-50 surface) */}
             <div className="px-3.5 py-2.5 rounded-lg bg-indigo-50/60 border border-indigo-200/80 flex items-start gap-2.5">
               <Code2 className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              <p className="text-xs sm:text-sm text-indigo-950 leading-relaxed">
                 {project.architectureLens.overview}
               </p>
             </div>
@@ -209,4 +204,3 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     </article>
   );
 };
-

@@ -59,7 +59,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({ nodes,
           <Workflow className="w-3.5 h-3.5 text-indigo-600" />
           <span>{label}</span>
         </div>
-        <span className="text-[11px] font-mono text-slate-500">
+        <span className="text-xs font-mono text-slate-500">
           {nodes.length} {nodes.length === 1 ? 'Layer' : 'Layers'}
         </span>
       </div>
@@ -77,11 +77,11 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({ nodes,
                 <div>
                   {/* Layer Label + Step Number */}
                   <div className="flex items-center justify-between gap-1.5 mb-2">
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-slate-500 uppercase tracking-tight">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-500 uppercase tracking-tight">
                       {getNodeIcon(node.layer, node.tech, index)}
                       <span className="truncate">{node.layer}</span>
                     </span>
-                    <span className="text-[10px] font-mono font-semibold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">
+                    <span className="text-xs font-mono font-semibold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">
                       {stepNumber}
                     </span>
                   </div>

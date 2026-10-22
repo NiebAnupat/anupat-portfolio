@@ -5,6 +5,9 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    caret-color: #2563eb;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f8fafc;
   }
 
   html[lang="en"] {
@@ -21,19 +24,53 @@
   pre,
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+
+  ::selection {
+    background-color: #dbeafe;
+    color: #172554;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
   }
 }
 
-/* Subtle engineering blueprint background grid for light-mode canvas */
-.bg-engineering-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(226, 232, 240, 0.55) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.55) 1px, transparent 1px);
+/* Custom WebKit Scrollbar themed to the slate/blue palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.bg-dot-matrix {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px);
-  background-size: 16px 16px;
+::-webkit-scrollbar-track {
+  background: #f8fafc;
 }
 
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid #f8fafc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

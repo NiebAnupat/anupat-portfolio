@@ -4,7 +4,6 @@ import {
   Cpu,
   Wrench,
   Compass,
-  Terminal,
   Sparkles,
   CheckCircle2,
 } from 'lucide-react';
@@ -33,14 +32,10 @@ export const SkillsSection: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mb-10">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-blue-600 font-semibold mb-2">
-            <Terminal className="w-3.5 h-3.5" />
-            <span>{locale === 'en' ? 'Technical Stack & Radar' : 'ทักษะและเครื่องมือทางเทคนิค'}</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             {skillsSection.title}
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-[65ch] leading-relaxed">
             {skillsSection.subtitle}
           </p>
         </div>
@@ -59,9 +54,6 @@ export const SkillsSection: React.FC = () => {
                     {categories.languages.title}
                   </h3>
                 </div>
-                <span className="text-xs font-mono text-slate-400">
-                  01 / {categories.languages.items.length}
-                </span>
               </div>
 
               <div className="flex flex-wrap gap-2.5">
@@ -72,13 +64,16 @@ export const SkillsSection: React.FC = () => {
                       key={skill}
                       className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-mono font-medium border transition-colors ${
                         isCore
-                          ? 'bg-blue-50/70 text-slate-900 border-blue-200'
+                          ? 'bg-blue-50/70 text-blue-950 border-blue-200 font-semibold'
                           : 'bg-slate-100/80 text-slate-700 border-slate-200'
                       }`}
                     >
                       <span>{skill}</span>
                       {isCore && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600" title="Core Production" />
+                        <span
+                          className="w-1.5 h-1.5 rounded-full bg-blue-600"
+                          title="Core Production"
+                        />
                       )}
                     </div>
                   );
@@ -108,9 +103,6 @@ export const SkillsSection: React.FC = () => {
                     {categories.frameworks.title}
                   </h3>
                 </div>
-                <span className="text-xs font-mono text-slate-400">
-                  02 / {categories.frameworks.items.length}
-                </span>
               </div>
 
               <div className="flex flex-wrap gap-2.5">
@@ -127,7 +119,7 @@ export const SkillsSection: React.FC = () => {
                     >
                       <span>{framework}</span>
                       {isCore && (
-                        <span className="text-[10px] font-mono uppercase px-1.5 py-0.2 rounded bg-white text-indigo-600 border border-indigo-200/80">
+                        <span className="text-xs font-mono uppercase px-1.5 py-0.2 rounded bg-white text-indigo-600 border border-indigo-200/80">
                           Core
                         </span>
                       )}
@@ -159,9 +151,6 @@ export const SkillsSection: React.FC = () => {
                     {categories.tools.title}
                   </h3>
                 </div>
-                <span className="text-xs font-mono text-slate-400">
-                  03 / {categories.tools.items.length}
-                </span>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -171,7 +160,7 @@ export const SkillsSection: React.FC = () => {
                     className="p-3.5 rounded-lg bg-slate-100/80 border border-slate-200 flex items-center justify-between"
                   >
                     <span className="font-mono text-sm font-semibold text-slate-900">{tool}</span>
-                    <span className="text-[11px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                    <span className="text-xs font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
                       {tool === 'Git'
                         ? locale === 'en'
                           ? 'Version Control'
@@ -220,9 +209,7 @@ export const SkillsSection: React.FC = () => {
                     key={idx}
                     className="p-3.5 rounded-lg bg-emerald-50/60 border border-emerald-200/90 flex items-start gap-2.5"
                   >
-                    <span className="font-mono text-xs font-bold text-emerald-700 bg-white border border-emerald-200 px-1.5 py-0.5 rounded shrink-0 mt-0.5">
-                      0{idx + 1}
-                    </span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                     <span className="text-xs sm:text-sm font-semibold text-emerald-700 leading-snug">
                       {interest}
                     </span>
@@ -236,4 +223,3 @@ export const SkillsSection: React.FC = () => {
     </section>
   );
 };
-

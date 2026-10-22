@@ -42,8 +42,18 @@ export const Navbar: React.FC = () => {
       }
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const handleLanguageSelect = (targetLocale: Locale) => {
@@ -71,7 +81,7 @@ export const Navbar: React.FC = () => {
               <span className="font-semibold text-slate-900 tracking-tight text-sm sm:text-base group-hover:text-blue-600 transition-colors">
                 {data.hero.name}
               </span>
-              <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-mono font-medium bg-slate-100/80 text-slate-600 border border-slate-200">
+              <span className="hidden lg:inline-flex items-center px-2 py-0.5 rounded-md text-xs font-mono font-medium bg-slate-100/80 text-slate-600 border border-slate-200">
                 Full Stack Developer
               </span>
             </div>
@@ -225,4 +235,3 @@ export const Navbar: React.FC = () => {
     </header>
   );
 };
-

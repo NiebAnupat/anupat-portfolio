@@ -28,7 +28,6 @@ export const HeroSection: React.FC = () => {
         setCopiedField((prev) => (prev === field ? null : prev));
       }, 2200);
     } catch {
-      // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = text;
       document.body.appendChild(textArea);
@@ -45,22 +44,16 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-b border-slate-200 bg-slate-50 bg-engineering-grid pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24"
+      className="relative border-b border-slate-200 bg-slate-50 pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24"
     >
-      {/* Subtle top radial light vignette */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-white via-white/60 to-transparent"
-      />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column: Primary Identity, Value Proposition, Actions & Quick Contact */}
           <div className="lg:col-span-7 flex flex-col items-start">
             {/* Top Honors & Role Badge */}
             <div className="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)] mb-6">
-              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
-                <Award className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full tabular-nums">
+                <Award className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
                 <span>{data.hero.badge}</span>
               </span>
               <span className="hidden sm:inline text-slate-300">•</span>
@@ -71,34 +64,34 @@ export const HeroSection: React.FC = () => {
               </span>
             </div>
 
-            {/* Main Headline */}
-            <div className="space-y-2 mb-5">
-              <p className="text-xs sm:text-sm font-mono uppercase tracking-wider text-blue-600 font-semibold">
-                {data.hero.role}
-              </p>
+            {/* Main Headline (No uppercase eyebrow above h1; h1 carries its own weight) */}
+            <div className="space-y-2.5 mb-5">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-[1.15]">
                 {data.hero.name}
               </h1>
-              <p className="text-lg sm:text-xl font-medium text-slate-700 pt-1">
+              <p className="text-base sm:text-lg font-mono font-semibold text-blue-600">
+                {data.hero.role}
+              </p>
+              <p className="text-lg sm:text-xl font-medium text-slate-700 pt-0.5">
                 {locale === 'en' ? (
                   <>
                     Engineering reliable enterprise systems with{' '}
-                    <span className="font-mono text-base sm:text-lg font-semibold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
+                    <span className="font-mono text-base sm:text-lg font-semibold text-blue-950 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
                       C# .NET
                     </span>{' '}
                     &amp;{' '}
-                    <span className="font-mono text-base sm:text-lg font-semibold text-indigo-600 bg-indigo-50/60 px-1.5 py-0.5 rounded border border-indigo-200">
+                    <span className="font-mono text-base sm:text-lg font-semibold text-indigo-950 bg-indigo-50/80 px-1.5 py-0.5 rounded border border-indigo-200">
                       React
                     </span>
                   </>
                 ) : (
                   <>
                     ออกแบบและพัฒนาระบบระดับองค์กรด้วย{' '}
-                    <span className="font-mono text-base sm:text-lg font-semibold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
+                    <span className="font-mono text-base sm:text-lg font-semibold text-blue-950 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
                       C# .NET
                     </span>{' '}
                     และ{' '}
-                    <span className="font-mono text-base sm:text-lg font-semibold text-indigo-600 bg-indigo-50/60 px-1.5 py-0.5 rounded border border-indigo-200">
+                    <span className="font-mono text-base sm:text-lg font-semibold text-indigo-950 bg-indigo-50/80 px-1.5 py-0.5 rounded border border-indigo-200">
                       React
                     </span>
                   </>
@@ -107,7 +100,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Summary Paragraph */}
-            <p className="text-slate-700 text-sm sm:text-base max-w-2xl mb-7 leading-relaxed">
+            <p className="text-slate-700 text-sm sm:text-base max-w-[65ch] mb-7 leading-relaxed">
               {data.hero.summary}
             </p>
 
@@ -122,7 +115,7 @@ export const HeroSection: React.FC = () => {
               >
                 <Download className="w-4 h-4" />
                 <span>{data.hero.ctaSecondary}</span>
-                <span className="ml-1 text-[11px] font-mono text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded">
+                <span className="ml-1 text-xs font-mono text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded">
                   PDF
                 </span>
               </a>
@@ -151,9 +144,9 @@ export const HeroSection: React.FC = () => {
                     {data.hero.email}
                   </span>
                   {copiedField === 'email' ? (
-                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                       <Check className="w-3 h-3" />
-                      <span>{ locale === 'en' ? 'Copied!' : 'คัดลอกแล้ว!' }</span>
+                      <span>{locale === 'en' ? 'Copied!' : 'คัดลอกแล้ว!'}</span>
                     </span>
                   ) : (
                     <Copy className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
@@ -168,13 +161,13 @@ export const HeroSection: React.FC = () => {
                   className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500/40 text-xs sm:text-sm text-slate-700 transition-all shadow-xs cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                  <span className="font-mono text-xs sm:text-sm text-slate-800">
+                  <span className="font-mono text-xs sm:text-sm text-slate-800 tabular-nums">
                     {data.hero.phone}
                   </span>
                   {copiedField === 'phone' ? (
-                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                       <Check className="w-3 h-3" />
-                      <span>{ locale === 'en' ? 'Copied!' : 'คัดลอกแล้ว!' }</span>
+                      <span>{locale === 'en' ? 'Copied!' : 'คัดลอกแล้ว!'}</span>
                     </span>
                   ) : (
                     <Copy className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
@@ -203,8 +196,8 @@ export const HeroSection: React.FC = () => {
                       : 'โครงสร้างความเชี่ยวชาญ Full-Stack'}
                   </span>
                 </div>
-                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-xs font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                   Production Ready
                 </span>
               </div>
@@ -220,7 +213,7 @@ export const HeroSection: React.FC = () => {
                       <span className="text-xs font-semibold text-slate-900">
                         {locale === 'en' ? 'Client & Presentation' : 'ส่วนติดต่อผู้ใช้ (Frontend)'}
                       </span>
-                      <span className="text-[11px] font-mono text-indigo-600 bg-indigo-50/60 px-2 py-0.5 rounded border border-indigo-200/80">
+                      <span className="text-xs font-mono text-indigo-600 bg-indigo-50/60 px-2 py-0.5 rounded border border-indigo-200/80">
                         React • TS • LIFF
                       </span>
                     </div>
@@ -241,7 +234,7 @@ export const HeroSection: React.FC = () => {
                       <span className="text-xs font-semibold text-slate-900">
                         {locale === 'en' ? 'Application & API Layer' : 'ระบบประมวลผล (Backend API)'}
                       </span>
-                      <span className="text-[11px] font-mono text-indigo-600 bg-indigo-50/60 px-2 py-0.5 rounded border border-indigo-200/80">
+                      <span className="text-xs font-mono text-indigo-600 bg-indigo-50/60 px-2 py-0.5 rounded border border-indigo-200/80">
                         C# .NET • MVC
                       </span>
                     </div>
@@ -262,7 +255,7 @@ export const HeroSection: React.FC = () => {
                       <span className="text-xs font-semibold text-slate-900">
                         {locale === 'en' ? 'Data & Persistence' : 'การจัดการฐานข้อมูล (Database)'}
                       </span>
-                      <span className="text-[11px] font-mono text-indigo-600 bg-indigo-50/60 px-2 py-0.5 rounded border border-indigo-200/80">
+                      <span className="text-xs font-mono text-indigo-600 bg-indigo-50/60 px-2 py-0.5 rounded border border-indigo-200/80">
                         SQL Server
                       </span>
                     </div>
@@ -278,7 +271,7 @@ export const HeroSection: React.FC = () => {
               {/* Dual-Lens Feature Hint */}
               <div className="mt-4 pt-3.5 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
                 <span className="inline-flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
                   <span>
                     {locale === 'en'
                       ? 'NDA-Compliant Architecture Showcase'
@@ -287,21 +280,21 @@ export const HeroSection: React.FC = () => {
                 </span>
                 <a
                   href="#projects"
-                  className="font-mono font-medium text-blue-600 hover:underline"
+                  className="font-mono font-medium text-blue-600 hover:underline tabular-nums"
                 >
                   {locale === 'en' ? 'Inspect 5 Systems →' : 'ดูทั้ง 5 ระบบ →'}
                 </a>
               </div>
             </div>
 
-            {/* Key Metrics Bento Strip: 1 col on mobile, 2-3 cols on sm+ */}
+            {/* Key Metrics Bento Strip: 1 col on mobile, 3 cols on sm+ */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {data.hero.metrics.map((metric, idx) => (
                 <div
                   key={idx}
                   className="bg-white rounded-xl border border-slate-200 p-4 shadow-[0_1px_3px_0_rgba(15,23,42,0.03),0_1px_2px_-1px_rgba(15,23,42,0.03)] hover:border-slate-300 transition-colors flex flex-col justify-between"
                 >
-                  <span className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  <span className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tracking-tight tabular-nums">
                     {metric.value}
                   </span>
                   <span className="text-xs text-slate-500 font-medium mt-1 leading-snug">
@@ -316,4 +309,3 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
-

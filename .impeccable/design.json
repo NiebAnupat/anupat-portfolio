@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T16:23:00+07:00",
+  "title": "Design System: Anupat Kaewmee — Engineering Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "engineering-blue": {
+        "role": "primary",
+        "displayName": "Engineering Blue",
+        "canonical": "#2563eb",
+        "tonalRamp": ["#eff6ff", "#dbeafe", "#93c5fd", "#60a5fa", "#3b82f6", "#2563eb", "#1d4ed8", "#172554"]
+      },
+      "architecture-indigo": {
+        "role": "secondary",
+        "displayName": "Architecture Indigo",
+        "canonical": "#4f46e5",
+        "tonalRamp": ["#eef2ff", "#e0e7ff", "#a5b4fc", "#818cf8", "#6366f1", "#4f46e5", "#4338ca", "#1e1b4b"]
+      },
+      "impact-emerald": {
+        "role": "tertiary",
+        "displayName": "Impact Emerald",
+        "canonical": "#047857",
+        "tonalRamp": ["#ecfdf5", "#d1fae5", "#6ee7b7", "#34d399", "#10b981", "#059669", "#047857", "#064e3b"]
+      },
+      "canvas-slate": {
+        "role": "neutral",
+        "displayName": "Canvas Slate",
+        "canonical": "#f8fafc",
+        "tonalRamp": ["#ffffff", "#f8fafc", "#f1f5f9", "#e2e8f0", "#cbd5e1", "#64748b", "#334155", "#0f172a"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name and primary identity." },
+      "headline": { "displayName": "Headline", "purpose": "Primary section headings (h2)." },
+      "title": { "displayName": "Title", "purpose": "Project card titles, experience roles, and university title (h3)." },
+      "body": { "displayName": "Body", "purpose": "Bilingual prose with automatic TH (1.75) and EN (1.6) line-height." },
+      "label": { "displayName": "Monospace Label", "purpose": "Technical stack badges, step counters, and tabular metrics." }
+    },
+    "shadows": [
+      {
+        "name": "structural-whisper",
+        "value": "0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03)",
+        "purpose": "Subtle structural elevation for white cards on the slate canvas."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Crisp deceleration for lens switches, hover transitions, and copy feedback."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Resume Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast slate primary CTA for downloading the PDF resume.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\"><span>Download Resume</span><span class=\"ds-badge\">PDF</span></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; background: #0f172a; color: #ffffff; text-decoration: none; transition: background 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-primary:hover { background: #1e293b; } .ds-btn-primary:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; } .ds-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: #1e293b; color: #cbd5e1; padding: 2px 6px; border-radius: 4px; }"
+    },
+    {
+      "name": "Secondary Action Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Crisp white bordered button for secondary navigation actions.",
+      "html": "<a href=\"#projects\" class=\"ds-btn-secondary\">Explore System Projects →</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; background: #ffffff; color: #334155; border: 1px solid #cbd5e1; text-decoration: none; transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-secondary:hover { background: #f8fafc; border-color: rgba(37, 99, 235, 0.4); color: #2563eb; } .ds-btn-secondary:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }"
+    },
+    {
+      "name": "Architecture Layer Chip",
+      "kind": "chip",
+      "refersTo": "chip-architecture",
+      "description": "Monospace indigo badge identifying a system component in the architecture flow.",
+      "html": "<span class=\"ds-chip-arch\">C# .NET Web API</span>",
+      "css": ".ds-chip-arch { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: #4f46e5; background: rgba(238, 242, 255, 0.8); border: 1px solid #c7d2fe; padding: 2px 8px; border-radius: 6px; }"
+    },
+    {
+      "name": "Operational Impact Callout",
+      "kind": "card",
+      "refersTo": "callout-impact",
+      "description": "Emerald callout box highlighting verified business and operational outcomes.",
+      "html": "<div class=\"ds-callout-impact\"><div class=\"ds-callout-label\">OPERATIONAL IMPACT</div><p class=\"ds-callout-text\">Enabled field agents to execute end-to-end service operations remotely within one unified platform.</p></div>",
+      "css": ".ds-callout-impact { padding: 14px 16px; border-radius: 8px; background: #ecfdf5; border: 1px solid #a7f3d0; color: #047857; } .ds-callout-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; } .ds-callout-text { font-size: 14px; font-weight: 500; margin: 0; line-height: 1.5; }"
+    },
+    {
+      "name": "Dual-Lens Segmented Switcher",
+      "kind": "nav",
+      "refersTo": "button-accent",
+      "description": "Segmented toggle switching project cards between Business Impact and System Architecture views.",
+      "html": "<div class=\"ds-segmented\"><button class=\"ds-seg-btn ds-seg-active\">Business Impact</button><button class=\"ds-seg-btn\">System Architecture</button></div>",
+      "css": ".ds-segmented { display: inline-flex; padding: 4px; border-radius: 8px; background: #f1f5f9; border: 1px solid #e2e8f0; gap: 4px; } .ds-seg-btn { padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: none; background: transparent; color: #475569; cursor: pointer; transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1); } .ds-seg-active { background: #2563eb; color: #ffffff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Architecture Ledger",
+    "overview": "The Architecture Ledger treats a software engineer's portfolio like a living technical specification from Stripe Docs or Linear (Light). Rather than decorating enterprise work with dark cyber gradients or synthetic mockups, the interface uses crisp paper-white containers on a cool slate canvas, 1px structural hairlines, and semantic color coding that distinguishes business outcomes from system architecture.",
+    "keyCharacteristics": [
+      "Daylight-first corporate-engineering surface hierarchy (#F8FAFC canvas, #FFFFFF cards, #F1F5F9 recessed diagram wells).",
+      "Semantic three-accent discipline: Engineering Blue for interactive controls, Architecture Indigo for system layers, and Impact Emerald for verified business outcomes and academic honors.",
+      "Bilingual typographic precision with automatic vertical rhythm adaptation between English (line-height: 1.6) and Thai (line-height: 1.75).",
+      "Interactive Dual-Lens switching (global and per-card) that transforms prose case studies into structured architectural node pipelines."
+    ],
+    "rules": [
+      {
+        "name": "The Semantic Accent Rule",
+        "body": "Never mix accent roles for decoration: Blue means interactive/navigation, Indigo means system architecture, and Emerald means verified outcome/honors.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tinted-Ink Rule",
+        "body": "Text placed on a tinted accent surface (#EFF6FF, #EEF2FF, #ECFDF5) must use a deep shade of that same hue (#172554, #1E1B4B, #047857) rather than neutral gray or slate.",
+        "section": "colors"
+      },
+      {
+        "name": "The Bilingual Breathing Room Rule",
+        "body": "Dynamically bind lang=\"th\" or lang=\"en\" on <html> so Thai copy automatically receives line-height: 1.75 to accommodate upper and lower vowel/tone marks without clipping.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Kicker Rule",
+        "body": "Section headings stand on their own typographic weight; never place decorative uppercase eyebrows or arbitrary section numbers above <h2> headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline First Rule",
+        "body": "Every elevated surface is bounded by a 1px solid #E2E8F0 border that shifts toward #CBD5E1 or rgba(37, 99, 235, 0.4) on hover. Never use wide blurry drop shadows or colored neon glows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the page strictly in Minimalist Light Mode (#F8FAFC canvas, #FFFFFF cards, #0F172A headings).",
+      "Do support both global and per-card toggling between Business Impact and System Architecture views.",
+      "Do use tabular-nums on all GPA metrics, counts, step indices, and phone numbers.",
+      "Do theme browser defaults (::selection, :focus-visible, scrollbars, caret) to match Engineering Blue (#2563EB)."
+    ],
+    "donts": [
+      "Don't use dark-mode backgrounds, neon gradients, or gradient text.",
+      "Don't place neutral gray/slate text on colored pastel backgrounds (#EFF6FF, #EEF2FF, #ECFDF5); always tint the text to the matching deep hue.",
+      "Don't add decorative two-axis CSS grid-line backgrounds or uppercase eyebrow kickers above section headings.",
+      "Don't fabricate screenshots or metrics for internal NDA-bound insurance systems."
+    ]
+  }
+}

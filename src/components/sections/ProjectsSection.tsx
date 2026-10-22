@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase, Network, Layers, Filter } from 'lucide-react';
+import { Briefcase, Network, Filter } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { ProjectItem, ProjectLens } from '../../types/portfolio';
 import { ProjectCard } from '../ui/ProjectCard';
@@ -15,7 +15,6 @@ export const ProjectsSection: React.FC = () => {
 
   const handleGlobalLensChange = (nextLens: ProjectLens) => {
     setGlobalLens(nextLens);
-    // Clear individual overrides so all cards sync to the newly chosen global perspective
     setCardLensOverrides({});
   };
 
@@ -60,13 +59,10 @@ export const ProjectsSection: React.FC = () => {
     totalCount: number,
     currentLens: ProjectLens
   ): string => {
-    // Flagship systems (Customer Portal & Branch Service) or full-width architecture views
     if (activeCategory === 'all') {
       if (project.featured) {
         return 'md:col-span-2 lg:col-span-12';
       }
-      // For the remaining 3 systems (Assessment Zebra, Assessment Branch, Underwrite Branch):
-      // If a card is individually toggled into Architecture mode, or if it's the final 5th item, give it full width on md/lg
       if (currentLens === 'architecture' || index === totalCount - 1) {
         return 'md:col-span-2 lg:col-span-12';
       }
@@ -89,18 +85,10 @@ export const ProjectsSection: React.FC = () => {
         {/* Section Header + Global Dual-Lens Switcher */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-blue-600 font-semibold mb-2">
-              <Layers className="w-3.5 h-3.5" />
-              <span>
-                {locale === 'en'
-                  ? 'Dual-Lens Interactive Showcase'
-                  : 'ระบบแสดงผลแบบ Dual-Lens Interactive'}
-              </span>
-            </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               {projectsSection.title}
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-[65ch] leading-relaxed">
               {projectsSection.subtitle}
             </p>
           </div>
@@ -172,7 +160,7 @@ export const ProjectsSection: React.FC = () => {
               >
                 <span>{cat.label}</span>
                 <span
-                  className={`font-mono text-[11px] px-1.5 py-0.2 rounded-full ${
+                  className={`font-mono text-xs px-1.5 py-0.2 rounded-full tabular-nums ${
                     isActive
                       ? 'bg-slate-800 text-slate-200'
                       : 'bg-slate-100 text-slate-500'

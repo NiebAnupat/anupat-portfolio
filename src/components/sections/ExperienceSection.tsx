@@ -29,20 +29,16 @@ export const ExperienceSection: React.FC = () => {
           {/* Left Column (7 cols): Work Experience Timeline */}
           <div className="lg:col-span-7">
             <div className="mb-8">
-              <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-blue-600 font-semibold mb-2">
-                <Briefcase className="w-3.5 h-3.5" />
-                <span>{locale === 'en' ? 'Career Progression' : 'เส้นทางสายอาชีพ'}</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                 {experienceSection.title}
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 mt-1.5">
+              <p className="text-sm sm:text-base text-slate-600 mt-1.5 max-w-[65ch]">
                 {experienceSection.subtitle}
               </p>
             </div>
 
             {/* Vertical Connected Timeline */}
-            <div className="relative pl-6 sm:pl-8 before:content-[''] before:absolute before:left-[11px] sm:before:left-[15px] before:top-3 before:bottom-3 before:w-[2px] before:bg-gradient-to-b before:from-blue-600 before:via-blue-300 before:to-slate-200 space-y-6">
+            <div className="relative pl-6 sm:pl-8 before:content-[''] before:absolute before:left-[11px] sm:before:left-[15px] before:top-3 before:bottom-3 before:w-[2px] before:bg-slate-200 space-y-6">
               {experienceSection.items.map((item, index) => {
                 const isCurrent = index === 0;
 
@@ -83,7 +79,7 @@ export const ExperienceSection: React.FC = () => {
                             <span>{item.type}</span>
                           </span>
 
-                          <div className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500">
+                          <div className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500 tabular-nums">
                             <Calendar className="w-3.5 h-3.5 text-slate-400" />
                             <span>{item.period}</span>
                           </div>
@@ -124,7 +120,7 @@ export const ExperienceSection: React.FC = () => {
                     {/* Progression Connector Banner between Full-Time and Internship */}
                     {index === 0 && experienceSection.items.length > 1 && (
                       <div className="relative pl-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs font-medium text-emerald-700">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs font-medium text-emerald-700 tabular-nums">
                           <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
                           <span>
                             {locale === 'en'
@@ -143,14 +139,10 @@ export const ExperienceSection: React.FC = () => {
           {/* Right Column (5 cols): Education & Academic Excellence Card */}
           <div id="education" className="lg:col-span-5 scroll-mt-24">
             <div className="mb-8">
-              <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-blue-600 font-semibold mb-2">
-                <GraduationCap className="w-3.5 h-3.5" />
-                <span>{locale === 'en' ? 'Academic Background' : 'ประวัติการศึกษา'}</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                 {educationSection.title}
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 mt-1.5">
+              <p className="text-sm sm:text-base text-slate-600 mt-1.5 max-w-[65ch]">
                 {locale === 'en'
                   ? 'Strong computer science fundamentals and software engineering foundation.'
                   : 'พื้นฐานด้านวิทยาการคอมพิวเตอร์และวิศวกรรมซอฟต์แวร์อย่างครบถ้วน'}
@@ -162,7 +154,7 @@ export const ExperienceSection: React.FC = () => {
               {/* University Header */}
               <div className="flex items-start justify-between gap-3 pb-4 mb-4 border-b border-slate-200">
                 <div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500 mb-1">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500 mb-1 tabular-nums">
                     <Calendar className="w-3.5 h-3.5 text-slate-400" />
                     <span>{educationSection.graduationDate}</span>
                   </span>
@@ -190,7 +182,7 @@ export const ExperienceSection: React.FC = () => {
               {/* First Class Honors & GPA Highlight Box */}
               <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 mb-6">
                 <div>
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-700/80 block">
+                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-700 block">
                     {locale === 'en' ? 'Academic Standing' : 'เกียรติบัตรการศึกษา'}
                   </span>
                   <div className="flex items-center gap-1.5 mt-0.5">
@@ -201,14 +193,14 @@ export const ExperienceSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="border-l border-emerald-200/80 pl-3">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-700/80 block">
+                <div className="border-l border-emerald-200/80 pl-3 tabular-nums">
+                  <span className="text-xs font-mono uppercase tracking-wider text-emerald-700 block">
                     Cumulative GPA
                   </span>
                   <span className="font-mono text-xl sm:text-2xl font-bold text-emerald-700 tracking-tight">
                     {educationSection.gpa}
                   </span>
-                  <span className="text-xs font-mono text-emerald-700/80"> / 4.00</span>
+                  <span className="text-xs font-mono text-emerald-700"> / 4.00</span>
                 </div>
               </div>
 
@@ -218,7 +210,7 @@ export const ExperienceSection: React.FC = () => {
                   <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-slate-700">
                     <BookOpen className="w-3.5 h-3.5 text-blue-600" />
                     <span>{educationSection.courseworkLabel}</span>
-                    <span className="ml-1 px-1.5 py-0.2 rounded bg-slate-200/70 text-slate-600 text-[11px]">
+                    <span className="ml-1 px-1.5 py-0.2 rounded bg-slate-200/70 text-slate-600 text-xs tabular-nums">
                       {educationSection.coursework.length}
                     </span>
                   </div>
@@ -261,7 +253,7 @@ export const ExperienceSection: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowAllCourses(true)}
-                      className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100/70 transition-colors cursor-pointer"
+                      className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100/70 transition-colors cursor-pointer tabular-nums"
                     >
                       +{educationSection.coursework.length - 6} more
                     </button>
@@ -275,4 +267,3 @@ export const ExperienceSection: React.FC = () => {
     </section>
   );
 };
-
