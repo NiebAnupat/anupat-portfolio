@@ -54,3 +54,4 @@ A production-ready, bilingual (Thai / English) engineering portfolio for **Anupa
 2. **Zero-Friction Verification:** Keep resume download, email copy, phone action, and key credentials visible and reachable within one click from the first viewport.
 3. **Bilingual Parity:** Treat Thai and English as equal first-class experiences with language-specific vertical rhythm and line-height tuning.
 4. **Honest Engineering Representation:** Represent internal NDA-protected systems through truthful architectural data flows rather than fabricated UI mockups.
+
