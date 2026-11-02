@@ -20,262 +20,259 @@ export const portfolioData: Record<Locale, PortfolioData> = {
       name: 'Anupat Kaewmee',
       role: 'Full Stack Developer (.NET & React)',
       summary:
-        'Highly motivated Computer Science graduate with First Class Honors and hands-on experience building enterprise full-stack applications. Focused on designing reliable backend architectures in C# .NET and responsive, intuitive user interfaces with React.',
-      location: 'Bangkok / Pathum Thani, Thailand',
+        'Computer Science graduate (First Class Honors, GPA 3.84) building reliable C# .NET backends and responsive React applications at Siam Smile Insurance.',
+      location: 'Bangkok / Pathum Thani',
       email: 'anupat.kae@gmail.com',
       phone: '066-112-8806',
-      ctaPrimary: 'Explore System Projects',
-      ctaSecondary: 'Download Resume',
+      ctaPrimary: 'View 5 Systems',
+      ctaSecondary: 'Resume PDF',
       metrics: [
-        { value: '3.84', label: 'GPA (First Class Honors)' },
-        { value: '5', label: 'Enterprise Systems Delivered' },
-        { value: '.NET + React', label: 'Primary Production Stack' },
+        { value: '3.84', label: 'GPA (1st Class Honors)' },
+        { value: '5', label: 'Production Systems' },
+        { value: '.NET + React', label: 'Core Enterprise Stack' },
       ],
     },
     projectsSection: {
-      title: 'Enterprise Projects & Architecture',
+      title: 'Enterprise Systems & Architecture',
       subtitle:
-        'Selected production systems engineered at Siam Smile Insurance. Switch between Business Impact and Technical Architecture views to inspect how each system operates.',
-      lensLabel: 'View Perspective:',
-      businessModeLabel: 'Business Impact (HR / Product)',
-      archModeLabel: 'System Architecture (Tech Lead)',
-      problemLabel: 'Context & Challenge',
-      solutionLabel: 'Implemented Solution',
-      impactLabel: 'Operational Impact',
-      archFlowLabel: 'System Flow & Layering',
-      highlightsLabel: 'Engineering Responsibilities',
+        '5 production systems delivered at Siam Smile Insurance. Switch between Business Impact and System Architecture views.',
+      lensLabel: 'Lens:',
+      businessModeLabel: 'Business Impact',
+      archModeLabel: 'System Architecture',
+      problemLabel: 'Challenge',
+      solutionLabel: 'Solution',
+      impactLabel: 'Impact',
+      archFlowLabel: 'Architecture Pipeline',
+      highlightsLabel: 'Key Engineering Scope',
       items: [
         {
           id: 'customer-portal',
           title: 'Customer Portal',
-          subtitle: 'External Client Self-Service Platform via LINE LIFF',
+          subtitle: 'Self-Service Policy & Profile Portal via LINE LIFF',
           category: 'customer',
           categoryLabel: 'External Portal',
           techStack: ['React', 'LINE LIFF', 'TypeScript', 'REST API'],
           featured: true,
           businessLens: {
             problem:
-              'Insurance clients needed a frictionless channel to inspect their policy details and keep personal profile information up to date without installing a standalone app or calling support.',
+              'Customers needed a frictionless mobile channel to inspect policies and update personal profiles without calling support.',
             solution:
-              'Engineered an external customer portal integrated directly with LINE LIFF, allowing users to authenticate via their existing LINE account and manage profile and policy information seamlessly.',
+              'Built a LINE LIFF customer portal with seamless LINE login and self-service profile/policy management.',
             impact:
-              'Empowered customers with 24/7 self-service access while reducing manual profile update requests handled by call center and branch staff.',
+              'Enabled 24/7 customer self-service and reduced manual update workload for branch and call center teams.',
           },
           architectureLens: {
             overview:
-              'Single-Page Application embedded within the LINE ecosystem using the LINE Front-end Framework (LIFF) for identity verification and seamless mobile UX.',
+              'Mobile-first React SPA embedded inside LINE LIFF with token-authenticated REST API integration.',
             nodes: [
               {
                 layer: 'Client Identity',
                 tech: 'LINE LIFF SDK',
-                description: 'In-app authentication, token retrieval & user context initialization',
+                description: 'In-app LINE auth & token initialization',
               },
               {
                 layer: 'Frontend App',
                 tech: 'React SPA',
-                description: 'Responsive mobile-first UI for policy viewing & profile forms',
+                description: 'Mobile-first policy & profile views',
               },
               {
-                layer: 'API Integration',
+                layer: 'API Layer',
                 tech: 'RESTful Services',
-                description: 'Secure token-validated requests for customer & policy records',
+                description: 'Token-verified customer & policy endpoints',
               },
               {
                 layer: 'Core Data',
-                tech: 'Customer & Policy DB',
-                description: 'Persisted profile updates & real-time policy status sync',
+                tech: 'Customer DB',
+                description: 'Real-time profile & policy persistence',
               },
             ],
             engineeringHighlights: [
-              'Integrated LINE LIFF lifecycle hooks for seamless session handling on mobile devices.',
-              'Built structured form validation to ensure accurate customer profile and policy updates.',
-              'Designed responsive views optimized specifically for the in-app LINE browser viewport.',
+              'Integrated LINE LIFF lifecycle hooks for automatic mobile session handling.',
+              'Built client-side form validation and mobile-optimized views for LINE In-App Browser.',
             ],
           },
         },
         {
           id: 'branch-service',
           title: 'Branch Service Platform',
-          subtitle: 'Unified All-in-One Field Agent Operations System',
+          subtitle: 'All-in-One Field Agent Operations System',
           category: 'operations',
           categoryLabel: 'Field Operations',
           techStack: ['C# .NET', 'React', 'SQL'],
           featured: true,
           businessLens: {
             problem:
-              'Field agents conducting off-site operations previously had to rely on fragmented tools and manual processes to complete customer transactions outside physical branches.',
+              'Field agents relied on fragmented tools to process customer transactions outside physical branches.',
             solution:
-              'Co-developed a unified, all-in-one Branch Service web platform that consolidates off-site operational workflows and transaction processing into a single system.',
+              'Co-developed an all-in-one web platform consolidating off-site field workflows and transaction processing.',
             impact:
-              'Enabled field agents to execute end-to-end service operations remotely within one unified platform, improving field productivity and service consistency.',
+              'Empowered field agents to complete end-to-end customer service remotely within a single unified system.',
           },
           architectureLens: {
             overview:
-              'Full-stack enterprise web application pairing a modular React frontend with a structured C# .NET backend API for transactional integrity.',
+              'Modular React workspace paired with a transactional C# .NET Web API and SQL Server.',
             nodes: [
               {
                 layer: 'Presentation',
                 tech: 'React Frontend',
-                description: 'Unified workspace for field agents with multi-step transaction forms',
+                description: 'Unified field agent workspace & multi-step forms',
               },
               {
                 layer: 'Backend API',
                 tech: 'C# .NET Web API',
-                description: 'Business rules validation, role permissions & service orchestration',
+                description: 'Business rules, permissions & service orchestration',
               },
               {
                 layer: 'Persistence',
-                tech: 'Relational DB (SQL)',
-                description: 'ACID-compliant storage for branch transactions & agent logs',
+                tech: 'SQL Server',
+                description: 'Transactional storage for branch & agent records',
               },
             ],
             engineeringHighlights: [
-              'Co-developed both frontend React workflows and backend C# .NET API endpoints.',
-              'Standardized data exchange contracts between client modules and backend services.',
-              'Adhered to strict enterprise coding standards for maintainability across team members.',
+              'Co-developed end-to-end React workflows and C# .NET API endpoints.',
+              'Standardized API data contracts across modular field service components.',
             ],
           },
         },
         {
           id: 'assessment-zebra',
           title: 'Assessment Zebra',
-          subtitle: 'Digitized Fleet Inspection Workflow for "Zebra Car"',
+          subtitle: 'Digital Fleet Inspection for "Zebra Car"',
           category: 'operations',
           categoryLabel: 'Workflow Digitization',
           techStack: ['C# .NET', 'React', 'SQL'],
           businessLens: {
             problem:
-              'Field inspections for the corporate "Zebra Car" automotive fleet relied on manual procedures, leading to inconsistent reporting and slow tracking.',
+              'Manual paper checklists for corporate "Zebra Car" inspections caused inconsistent data and slow tracking.',
             solution:
-              'Engineered a specialized vehicle inspection web utility tailored for the Zebra Car fleet, converting paper/manual checklists into a guided digital workflow.',
+              'Engineered a guided digital vehicle inspection web utility tailored for field staff.',
             impact:
-              'Transformed manual field inspection procedures into a structured, auditable digital workflow with standardized data capture.',
+              'Replaced manual checklists with a standardized, auditable digital fleet inspection workflow.',
           },
           architectureLens: {
             overview:
-              'Structured inspection capture application utilizing React for field input and C# .NET for validation and historical fleet tracking.',
+              'Guided React inspection checklist backed by C# .NET validation and SQL fleet history tracking.',
             nodes: [
               {
                 layer: 'Field UI',
                 tech: 'React Web App',
-                description: 'Structured step-by-step vehicle inspection checklist & status capture',
+                description: 'Step-by-step mobile vehicle inspection form',
               },
               {
                 layer: 'Service Layer',
                 tech: 'C# .NET Backend',
-                description: 'Inspection workflow validation & fleet condition aggregation',
+                description: 'Checklist validation & condition aggregation',
               },
               {
                 layer: 'Storage',
                 tech: 'SQL Database',
-                description: 'Historical inspection records & vehicle readiness logs',
+                description: 'Vehicle readiness logs & audit history',
               },
             ],
             engineeringHighlights: [
-              'Modeled multi-part vehicle inspection criteria into structured relational schemas.',
-              'Engineered intuitive UI forms suitable for rapid field data entry.',
+              'Modeled multi-point vehicle inspection criteria into relational SQL schemas.',
+              'Designed fast-input mobile forms for on-site inspectors.',
             ],
           },
         },
         {
           id: 'assessment-branch',
           title: 'Assessment Branch',
-          subtitle: 'Physical Branch Quality & Compliance Appraisal System',
+          subtitle: 'Nationwide Branch Quality & Compliance Appraisal',
           category: 'compliance',
           categoryLabel: 'Quality & Compliance',
           techStack: ['C# .NET', 'React', 'SQL'],
           businessLens: {
             problem:
-              'Maintaining uniform physical branding, service quality, and operational compliance across nationwide branch locations required a standardized evaluation mechanism.',
+              'Auditing physical branding and operational standards across nationwide branches lacked a unified scoring tool.',
             solution:
-              'Developed a comprehensive branch appraisal platform to evaluate, track, and standardize the physical image and operational compliance of branch locations.',
+              'Developed a centralized branch appraisal platform for scoring, tracking, and auditing branch standards.',
             impact:
-              'Provided central management with transparent scoring and historical tracking to uphold physical branch standards nationwide.',
+              'Delivered transparent compliance scoring and historical audit tracking across nationwide branches.',
           },
           architectureLens: {
             overview:
-              'Full-stack appraisal and audit tracking system built with React and C# .NET.',
+              'Full-stack audit and scoring platform built with React, C# .NET, and SQL Server.',
             nodes: [
               {
                 layer: 'Audit UI',
                 tech: 'React Client',
-                description: 'Standardized branch evaluation forms & compliance tracking views',
+                description: 'Standardized branch appraisal forms & status views',
               },
               {
                 layer: 'Core API',
                 tech: 'C# .NET',
-                description: 'Scoring calculation engine & branch audit lifecycle management',
+                description: 'Weighted scoring engine & audit lifecycle API',
               },
               {
                 layer: 'Data Store',
                 tech: 'SQL Server',
-                description: 'Branch appraisal histories, KPI metrics & compliance records',
+                description: 'Branch KPI scores & historical compliance records',
               },
             ],
             engineeringHighlights: [
-              'Implemented dynamic evaluation criteria and standardized scoring logic in C# .NET.',
-              'Built interactive tracking views in React for reviewing branch compliance status.',
+              'Implemented dynamic evaluation criteria and weighted scoring logic in C# .NET.',
+              'Built interactive compliance tracking dashboards in React.',
             ],
           },
         },
         {
           id: 'underwrite-branch',
           title: 'Underwrite Branch',
-          subtitle: 'Automated Insured Member Screening & Risk Assessment',
+          subtitle: 'Automated Insured Member Risk Screening',
           category: 'compliance',
           categoryLabel: 'Risk & Underwriting',
           techStack: ['C# .NET MVC', 'SQL'],
           businessLens: {
             problem:
-              'Manual screening of insured member applications created bottlenecks during the underwriting risk assessment process.',
+              'Manual screening of insured member applications created bottlenecks during underwriting risk reviews.',
             solution:
-              'Contributed to the development of an automated insured member screening system using the MVC pattern to streamline underwriting workflows.',
+              'Contributed to an automated member screening web system built on ASP.NET MVC.',
             impact:
-              'Accelerated underwriting risk evaluation and improved screening consistency across branch submissions.',
+              'Accelerated underwriting risk evaluation and standardized screening accuracy across branches.',
           },
           architectureLens: {
             overview:
-              'Server-rendered MVC enterprise application integrating automated screening logic directly with underwriting data workflows.',
+              'ASP.NET MVC application integrating automated underwriting rules directly with SQL workflows.',
             nodes: [
               {
-                layer: 'MVC View & Controller',
+                layer: 'MVC Layer',
                 tech: '.NET MVC',
-                description: 'Request routing, member screening views & controller orchestration',
+                description: 'Controller routing & underwriting review views',
               },
               {
-                layer: 'Business Logic',
-                tech: 'Screening Rules Engine',
-                description: 'Automated insured member eligibility & risk assessment checks',
+                layer: 'Rules Engine',
+                tech: 'C# Domain Logic',
+                description: 'Automated member eligibility & risk screening',
               },
               {
                 layer: 'Data Layer',
                 tech: 'SQL Database',
-                description: 'Member application records & underwriting decision logs',
+                description: 'Application records & underwriting decision logs',
               },
             ],
             engineeringHighlights: [
-              'Contributed to MVC controller and domain model logic for automated risk screening.',
-              'Optimized data queries to support rapid underwriting review workflows.',
+              'Developed MVC controllers and domain rules for automated underwriting screening.',
+              'Optimized SQL queries for rapid application review.',
             ],
           },
         },
       ],
     },
     experienceSection: {
-      title: 'Professional Experience',
-      subtitle: 'Proven track record of delivering full-stack enterprise systems in the insurance sector.',
+      title: 'Experience',
+      subtitle: 'Enterprise software delivery at Siam Smile Insurance.',
       items: [
         {
           id: 'siam-smile-fullstack',
           role: 'Full Stack Developer',
           company: 'SIAM SMILE INSURANCE PUBLIC CO., LTD.',
           location: 'Bangkok, Thailand',
-          period: 'July 2025 – Present',
+          period: 'Jul 2025 – Present',
           type: 'Full-Time',
           highlights: [
-            'Develop end-to-end full-stack web applications across frontend (React) and backend (C# .NET) layers.',
-            'Maintain mission-critical existing enterprise systems while architecting and implementing new business features.',
-            'Deliver customer-facing and internal operational platforms including Customer Portal (LINE LIFF), Branch Service, and Assessment systems.',
+            'Build and maintain end-to-end enterprise applications using React and C# .NET.',
+            'Delivered Customer Portal (LINE LIFF), Branch Service, and Assessment platforms.',
           ],
         },
         {
@@ -283,27 +280,26 @@ export const portfolioData: Record<Locale, PortfolioData> = {
           role: 'Intern Full Stack Developer',
           company: 'SIAM SMILE INSURANCE PUBLIC CO., LTD.',
           location: 'Bangkok, Thailand',
-          period: 'August 2024 – December 2024',
+          period: 'Aug 2024 – Dec 2024',
           type: 'Internship',
           highlights: [
-            'Developed full-stack web applications covering both frontend interfaces and backend APIs.',
-            'Collaborated closely with senior developers and team members while adhering to strict enterprise coding and project standards.',
+            'Developed full-stack features across frontend UIs and backend APIs under enterprise coding standards.',
           ],
         },
       ],
     },
     educationSection: {
       title: 'Education',
-      degree: 'Bachelor of Science in Computer Science',
+      degree: 'B.Sc. in Computer Science',
       university: 'Rangsit University',
       location: 'Pathum Thani, Thailand',
-      graduationDate: 'Graduated May 2025',
+      graduationDate: 'May 2025',
       honors: 'First Class Honors',
       gpa: '3.84',
-      courseworkLabel: 'Relevant Coursework',
+      courseworkLabel: 'Core Coursework',
       coursework: [
         'Object-Oriented Programming (OOP)',
-        'Data Structures and Algorithms',
+        'Data Structures & Algorithms',
         'Software Engineering',
         'System Analysis',
         'Database Systems',
@@ -316,11 +312,11 @@ export const portfolioData: Record<Locale, PortfolioData> = {
       ],
     },
     skillsSection: {
-      title: 'Technical Skills & Engineering Radar',
-      subtitle: 'Core production technologies and areas of continuous engineering exploration.',
+      title: 'Technical Skills',
+      subtitle: 'Production stack and active engineering exploration.',
       categories: {
         languages: {
-          title: 'Programming Languages',
+          title: 'Languages',
           items: ['C#', 'TypeScript', 'JavaScript', 'SQL', 'Java'],
         },
         frameworks: {
@@ -332,20 +328,17 @@ export const portfolioData: Record<Locale, PortfolioData> = {
           items: ['Git', 'Docker'],
         },
         interests: {
-          title: 'Engineering Interests & Exploring',
-          description: 'Actively expanding knowledge in low-level systems performance and automated delivery pipelines:',
-          items: [
-            'Systems Programming with Rust or Go',
-            'CI/CD (Continuous Integration / Continuous Deployment)',
-          ],
+          title: 'Exploring Radar',
+          description: 'Expanding into systems programming and automated delivery:',
+          items: ['Systems Programming (Rust / Go)', 'CI/CD Pipelines'],
         },
       },
     },
     contactSection: {
       title: 'Let’s Build Reliable Software Together',
-      subtitle: 'Available for discussions regarding Full Stack / Software Engineering opportunities.',
-      copyEmail: 'Copy Email Address',
-      copied: 'Copied to Clipboard!',
+      subtitle: 'Open to Full Stack / Software Engineering opportunities.',
+      copyEmail: 'Copy Email',
+      copied: 'Copied!',
       callPhone: 'Call 066-112-8806',
     },
   },
@@ -357,10 +350,10 @@ export const portfolioData: Record<Locale, PortfolioData> = {
         'พอร์ตโฟลิโอของ อนุภัทร แก้วมี บัณฑิตวิทยาการคอมพิวเตอร์ เกียรตินิยมอันดับ 1 (GPA 3.84) และ Full Stack Developer ผู้เชี่ยวชาญด้าน C# .NET และ React',
     },
     nav: {
-      about: 'เกี่ยวกับฉัน',
-      projects: 'ผลงานระบบ',
+      about: 'เกี่ยวกับ',
+      projects: 'ผลงาน',
       experience: 'ประสบการณ์',
-      skills: 'ทักษะทางเทคนิค',
+      skills: 'ทักษะ',
       contact: 'ติดต่อ',
       downloadResume: 'เรซูเม่ PDF',
     },
@@ -369,201 +362,197 @@ export const portfolioData: Record<Locale, PortfolioData> = {
       name: 'อนุภัทร แก้วมี',
       role: 'Full Stack Developer (.NET & React)',
       summary:
-        'บัณฑิตสาขาวิทยาการคอมพิวเตอร์ เกียรตินิยมอันดับ 1 (GPA 3.84) ที่มีประสบการณ์จริงในการพัฒนาระบบ Full-Stack ระดับองค์กร มุ่งเน้นการออกแบบโครงสร้าง Backend ที่มั่นคงด้วย C# .NET ควบคู่กับ Frontend ที่ตอบสนองรวดเร็วและใช้งานง่ายด้วย React',
-      location: 'กรุงเทพมหานคร / ปทุมธานี',
+        'บัณฑิตวิทยาการคอมพิวเตอร์ เกียรตินิยมอันดับ 1 (GPA 3.84) มีประสบการณ์พัฒนาระบบ Full-Stack ระดับองค์กร เชี่ยวชาญการออกแบบ Backend ด้วย C# .NET และ Frontend ด้วย React',
+      location: 'กรุงเทพฯ / ปทุมธานี',
       email: 'anupat.kae@gmail.com',
       phone: '066-112-8806',
-      ctaPrimary: 'ดูผลงานและการออกแบบระบบ',
-      ctaSecondary: 'ดาวน์โหลดเรซูเม่',
+      ctaPrimary: 'ดูผลงานทั้ง 5 ระบบ',
+      ctaSecondary: 'เรซูเม่ PDF',
       metrics: [
         { value: '3.84', label: 'เกรดเฉลี่ย (เกียรตินิยมอันดับ 1)' },
-        { value: '5', label: 'ระบบระดับองค์กรที่พัฒนาจริง' },
-        { value: '.NET + React', label: 'เทคโนโลยีหลักที่ใช้ทำงานจริง' },
+        { value: '5', label: 'ระบบองค์กรที่พัฒนาจริง' },
+        { value: '.NET + React', label: 'เทคโนโลยีหลักที่ใช้ทำงาน' },
       ],
     },
     projectsSection: {
-      title: 'ผลงานการพัฒนาระบบและสถาปัตยกรรมซอฟต์แวร์',
+      title: 'ผลงานการพัฒนาระบบองค์กร',
       subtitle:
-        'ระบบงานจริงที่พัฒนาให้กับ บมจ. สยามสไมล์ประกันภัย สามารถสลับมุมมองระหว่าง "ผลลัพธ์ทางธุรกิจ" และ "สถาปัตยกรรมทางเทคนิค" เพื่อดูรายละเอียดการออกแบบระบบ',
-      lensLabel: 'เลือกมุมมองการแสดงผล:',
-      businessModeLabel: 'ผลลัพธ์ทางธุรกิจ (สำหรับ HR / ผู้บริหาร)',
-      archModeLabel: 'สถาปัตยกรรมระบบ (สำหรับ Tech Lead)',
-      problemLabel: 'โจทย์และบริบทของระบบ',
-      solutionLabel: 'แนวทางการพัฒนา',
-      impactLabel: 'ผลลัพธ์ที่ได้',
-      archFlowLabel: 'โครงสร้างและการทำงานของระบบ (System Flow)',
-      highlightsLabel: 'ขอบเขตงานด้านวิศวกรรมซอฟต์แวร์',
+        '5 ระบบงานจริงที่พัฒนาที่ บมจ. สยามสไมล์ประกันภัย สลับดูได้ทั้งมุมมองธุรกิจและสถาปัตยกรรมเทคนิค',
+      lensLabel: 'มุมมอง:',
+      businessModeLabel: 'ผลลัพธ์ธุรกิจ',
+      archModeLabel: 'สถาปัตยกรรมระบบ',
+      problemLabel: 'โจทย์ของระบบ',
+      solutionLabel: 'สิ่งที่พัฒนา',
+      impactLabel: 'ผลลัพธ์',
+      archFlowLabel: 'โครงสร้างการทำงาน (System Flow)',
+      highlightsLabel: 'ขอบเขตงานที่รับผิดชอบ',
       items: [
         {
           id: 'customer-portal',
           title: 'Customer Portal',
           subtitle: 'ระบบจัดการข้อมูลลูกค้าและกรมธรรม์ผ่าน LINE LIFF',
           category: 'customer',
-          categoryLabel: 'ระบบบริการลูกค้าภายนอก',
+          categoryLabel: 'บริการลูกค้าภายนอก',
           techStack: ['React', 'LINE LIFF', 'TypeScript', 'REST API'],
           featured: true,
           businessLens: {
             problem:
-              'ลูกค้าต้องการช่องทางที่สะดวกในการตรวจสอบข้อมูลกรมธรรม์และอัปเดตข้อมูลส่วนตัวด้วยตนเอง โดยไม่ต้องดาวน์โหลดแอปพลิเคชันใหม่หรือติดต่อผ่านเจ้าหน้าที่ทุกครั้ง',
+              'ลูกค้าต้องการตรวจสอบกรมธรรม์และแก้ไขข้อมูลส่วนตัวด้วยตนเองผ่านมือถือ โดยไม่ต้องโหลดแอปเพิ่มหรือโทรหาเจ้าหน้าที่',
             solution:
-              'พัฒนาเว็บพอร์ทัลสำหรับลูกค้าภายนอกที่เชื่อมต่อกับ LINE LIFF ช่วยให้ลูกค้ายืนยันตัวตนผ่านบัญชี LINE และจัดการข้อมูลส่วนตัวรวมถึงข้อมูลกรมธรรม์ได้อย่างไร้รอยต่อ',
+              'พัฒนาเว็บพอร์ทัลเชื่อมต่อ LINE LIFF ให้ลูกค้ายืนยันตัวตนผ่าน LINE และจัดการข้อมูลกรมธรรม์ได้ทันที',
             impact:
-              'ยกระดับประสบการณ์ลูกค้าให้สามารถจัดการข้อมูลได้ด้วยตนเองตลอด 24 ชั่วโมง และช่วยลดภาระงานเอกสารของเจ้าหน้าที่สาขา',
+              'ลูกค้าบริการตนเองได้ตลอด 24 ชม. และลดภาระงานอัปเดตข้อมูลของเจ้าหน้าที่สาขา',
           },
           architectureLens: {
             overview:
-              'พัฒนาในรูปแบบ Single-Page Application (SPA) ที่รันอยู่บนสภาพแวดล้อมของ LINE LIFF เพื่อจัดการเรื่อง Authentication และแสดงผลบนมือถือได้อย่างลื่นไหล',
+              'React SPA รันบน LINE LIFF เชื่อมต่อ REST API ด้วยการยืนยันตัวตนผ่าน LINE Access Token',
             nodes: [
               {
                 layer: 'Client Identity',
                 tech: 'LINE LIFF SDK',
-                description: 'ยืนยันตัวตนผ่าน LINE Context และดึง Access Token ของผู้ใช้งาน',
+                description: 'ยืนยันตัวตนผ่าน LINE และดึง Access Token',
               },
               {
                 layer: 'Frontend App',
                 tech: 'React SPA',
-                description: 'UI แบบ Mobile-First สำหรับแสดงข้อมูลกรมธรรม์และฟอร์มแก้ไขโปรไฟล์',
+                description: 'UI แบบ Mobile-First สำหรับดูกรมธรรม์และแก้โปรไฟล์',
               },
               {
-                layer: 'API Integration',
+                layer: 'API Layer',
                 tech: 'RESTful Services',
-                description: 'ตรวจสอบสิทธิ์ผ่าน Token และรับ-ส่งข้อมูลลูกค้าอย่างปลอดภัย',
+                description: 'ตรวจสอบ Token และรับ-ส่งข้อมูลลูกค้าอย่างปลอดภัย',
               },
               {
                 layer: 'Core Data',
-                tech: 'Customer & Policy DB',
-                description: 'บันทึกการแก้ไขข้อมูลส่วนตัวและซิงค์สถานะกรมธรรม์',
+                tech: 'Customer DB',
+                description: 'บันทึกข้อมูลส่วนตัวและซิงค์สถานะกรมธรรม์',
               },
             ],
             engineeringHighlights: [
-              'เชื่อมต่อ LINE LIFF SDK เข้ากับ Lifecycle ของ React เพื่อจัดการสถานะการล็อกอินอัตโนมัติ',
-              'ออกแบบระบบตรวจสอบความถูกต้องของข้อมูล (Form Validation) ก่อนส่งอัปเดตข้อมูลกรมธรรม์',
-              'ปรับแต่ง Responsive UI ให้รองรับการแสดงผลบน LINE In-App Browser ทุกขนาดหน้าจอ',
+              'เชื่อมต่อ LINE LIFF SDK เข้ากับ React Lifecycle เพื่อจัดการล็อกอินอัตโนมัติ',
+              'สร้างระบบ Form Validation และปรับแต่ง UI ให้เหมาะกับ LINE In-App Browser',
             ],
           },
         },
         {
           id: 'branch-service',
           title: 'Branch Service Platform',
-          subtitle: 'แพลตฟอร์มกลางแบบครบวงจรสำหรับการปฏิบัติงานนอกสถานที่',
+          subtitle: 'แพลตฟอร์มกลางสำหรับการปฏิบัติงานนอกสถานที่',
           category: 'operations',
-          categoryLabel: 'ระบบปฏิบัติการภาคสนาม',
+          categoryLabel: 'ปฏิบัติการภาคสนาม',
           techStack: ['C# .NET', 'React', 'SQL'],
           featured: true,
           businessLens: {
             problem:
-              'เจ้าหน้าที่ภาคสนามต้องออกไปให้บริการและทำธุรกรรมนอกสถานที่ ซึ่งเดิมต้องสลับใช้งานหลายระบบทำให้เกิดความล่าช้าและซ้ำซ้อน',
+              'เดิมเจ้าหน้าที่ภาคสนามต้องสลับใช้หลายระบบในการทำธุรกรรมนอกสถานที่ ทำให้เกิดความล่าช้าและซ้ำซ้อน',
             solution:
-              'ร่วมพัฒนาแพลตฟอร์ม Branch Service แบบ All-in-one ที่รวบรวมเครื่องมือการปฏิบัติงานและระบบทำธุรกรรมนอกสถานที่ทั้งหมดไว้ในระบบเดียว',
+              'ร่วมพัฒนาแพลตฟอร์มแบบ All-in-one รวมศูนย์เครื่องมือปฏิบัติงานและทำธุรกรรมนอกสถานที่ไว้ในระบบเดียว',
             impact:
-              'ช่วยให้เจ้าหน้าที่ภาคสนามดำเนินงานและทำธุรกรรมนอกสถานที่ได้ครบจบในที่เดียว เพิ่มความคล่องตัวและลดข้อผิดพลาดในการทำงาน',
+              'ช่วยให้เจ้าหน้าที่บริการลูกค้าและทำธุรกรรมนอกสถานที่ได้ครบจบในที่เดียวอย่างรวดเร็ว',
           },
           architectureLens: {
             overview:
-              'ระบบ Full-Stack Enterprise ที่แยกส่วนการแสดงผลด้วย React และประมวลผลลอจิกทางธุรกิจผ่าน C# .NET Web API',
+              'ระบบ Full-Stack แยกส่วนแสดงผลด้วย React และประมวลผลลอจิกผ่าน C# .NET Web API คู่กับ SQL',
             nodes: [
               {
                 layer: 'Presentation',
                 tech: 'React Frontend',
-                description: 'หน้าจอการทำงานแบบรวมศูนย์สำหรับเจ้าหน้าที่ภาคสนาม',
+                description: 'หน้าจอรวมศูนย์สำหรับเจ้าหน้าที่ภาคสนาม',
               },
               {
                 layer: 'Backend API',
                 tech: 'C# .NET Web API',
-                description: 'จัดการ Business Logic, สิทธิ์การเข้าถึง และการประมวลผลธุรกรรม',
+                description: 'จัดการ Business Logic, สิทธิ์ผู้ใช้งาน และธุรกรรม',
               },
               {
                 layer: 'Persistence',
-                tech: 'Relational DB (SQL)',
-                description: 'จัดเก็บข้อมูลธุรกรรมและประวัติการปฏิบัติงานอย่างถูกต้องแม่นยำ',
+                tech: 'SQL Server',
+                description: 'จัดเก็บข้อมูลธุรกรรมและประวัติการปฏิบัติงาน',
               },
             ],
             engineeringHighlights: [
               'ร่วมพัฒนาทั้งฝั่ง Frontend (React) และ Backend (C# .NET) แบบครบวงจร',
-              'ออกแบบโครงสร้าง API Contract ให้รองรับการทำงานร่วมกันของหลายโมดูลในระบบเดียว',
-              'ปฏิบัติตามมาตรฐานการเขียนโค้ดขององค์กรอย่างเคร่งครัดเพื่อให้ง่ายต่อการดูแลรักษาระยะยาว',
+              'ออกแบบ API Contract มาตรฐานสำหรับเชื่อมโยงหลายโมดูลในระบบเดียว',
             ],
           },
         },
         {
           id: 'assessment-zebra',
           title: 'Assessment Zebra',
-          subtitle: 'ระบบดิจิทัลสำหรับตรวจสภาพรถยนต์ในฝูงรถ "Zebra Car"',
+          subtitle: 'ระบบตรวจสภาพรถยนต์ดิจิทัลสำหรับฝูงรถ "Zebra Car"',
           category: 'operations',
-          categoryLabel: 'Digital Transformation',
+          categoryLabel: 'ปฏิบัติการภาคสนาม',
           techStack: ['C# .NET', 'React', 'SQL'],
           businessLens: {
             problem:
-              'การตรวจสภาพรถยนต์ภาคสนามของกลุ่มรถ "Zebra Car" เดิมใช้ขั้นตอนแบบ Manual ทำให้ยากต่อการรวบรวมข้อมูลและตรวจสอบย้อนหลัง',
+              'การตรวจสภาพรถ "Zebra Car" แบบเดิมใช้กระดาษและ Manual ทำให้รวบรวมข้อมูลช้าและตรวจสอบย้อนหลังยาก',
             solution:
-              'พัฒนาระบบตรวจสภาพรถยนต์เฉพาะทางสำหรับฝูงรถ Zebra Car โดยเปลี่ยนขั้นตอนการตรวจเช็คหน้างานให้กลายเป็น Digital Workflow ที่มีโครงสร้างชัดเจน',
+              'พัฒนาระบบเว็บสำหรับตรวจเช็คสภาพรถหน้างาน เปลี่ยนขั้นตอน Manual เป็น Digital Workflow',
             impact:
-              'เปลี่ยนกระบวนการทำงานภาคสนามจากระบบ Manual สู่ระบบดิจิทัลเต็มรูปแบบ ทำให้ข้อมูลมีมาตรฐานเดียวกันและตรวจสอบสถานะรถได้ทันที',
+              'เปลี่ยนการตรวจสภาพรถสู่ระบบดิจิทัล 100% ข้อมูลมีมาตรฐานเดียวกันและตรวจสอบย้อนหลังได้ทันที',
           },
           architectureLens: {
             overview:
-              'เว็บแอปพลิเคชันสำหรับบันทึกและประมวลผลข้อมูลการตรวจสภาพรถยนต์ พัฒนาด้วย React และ C# .NET',
+              'ระบบฟอร์มตรวจเช็คสภาพรถด้วย React ประมวลผลสถานะผ่าน C# .NET และเก็บประวัติลง SQL',
             nodes: [
               {
                 layer: 'Field UI',
                 tech: 'React Web App',
-                description: 'แบบฟอร์มดิจิทัลสำหรับบันทึกผลตรวจสภาพรถเป็นลำดับขั้น',
+                description: 'แบบฟอร์มดิจิทัลตรวจสภาพรถทีละขั้นตอน',
               },
               {
                 layer: 'Service Layer',
                 tech: 'C# .NET Backend',
-                description: 'ตรวจสอบความครบถ้วนของรายการตรวจเช็คและประมวลผลสถานะรถ',
+                description: 'ตรวจสอบความครบถ้วนและสรุปสถานะรถ',
               },
               {
                 layer: 'Storage',
                 tech: 'SQL Database',
-                description: 'ฐานข้อมูลประวัติการตรวจสภาพและสถานะความพร้อมของรถยนต์',
+                description: 'ฐานข้อมูลประวัติการตรวจและความพร้อมของรถ',
               },
             ],
             engineeringHighlights: [
-              'แปลงรายการตรวจสภาพรถยนต์ที่มีความซับซ้อนให้กลายเป็นโครงสร้างฐานข้อมูลและฟอร์มที่ใช้งานง่าย',
-              'ออกแบบ UI ให้เหมาะกับการกดบันทึกข้อมูลหน้างานผ่านอุปกรณ์พกพา',
+              'ออกแบบโครงสร้างฐานข้อมูลและฟอร์มตรวจสภาพรถให้ใช้งานง่ายผ่านมือถือหน้างาน',
             ],
           },
         },
         {
           id: 'assessment-branch',
           title: 'Assessment Branch',
-          subtitle: 'ระบบประเมินและควบคุมมาตรฐานคุณภาพสาขา',
+          subtitle: 'ระบบประเมินภาพลักษณ์และมาตรฐานสาขาทั่วประเทศ',
           category: 'compliance',
-          categoryLabel: 'ระบบควบคุมมาตรฐาน',
+          categoryLabel: 'ควบคุมมาตรฐาน',
           techStack: ['C# .NET', 'React', 'SQL'],
           businessLens: {
             problem:
-              'องค์กรต้องการเครื่องมือกลางในการประเมิน ติดตาม และรักษามาตรฐานด้านภาพลักษณ์ คุณภาพ และการปฏิบัติงานของสาขาต่างๆ ให้เป็นมาตรฐานเดียวกัน',
+              'องค์กรต้องการเครื่องมือกลางสำหรับประเมินและรักษามาตรฐานภาพลักษณ์ของสาขาทั่วประเทศให้เป็นเกณฑ์เดียวกัน',
             solution:
-              'พัฒนาระบบประเมินสาขา (Branch Appraisal System) ที่ครอบคลุมตั้งแต่การให้คะแนน การติดตามผล ไปจนถึงการจัดเก็บมาตรฐานการปฏิบัติงานของแต่ละสาขา',
+              'พัฒนาระบบประเมินสาขา (Branch Appraisal) สำหรับให้คะแนน ติดตามผล และจัดเก็บประวัติมาตรฐานสาขา',
             impact:
-              'ช่วยให้การประเมินภาพลักษณ์และมาตรฐานการปฏิบัติงานของสาขามีความโปร่งใส วัดผลได้จริง และเปรียบเทียบข้อมูลย้อนหลังได้',
+              'ช่วยให้การประเมินคุณภาพสาขาโปร่งใส วัดผลได้จริง และเปรียบเทียบข้อมูลย้อนหลังได้ชัดเจน',
           },
           architectureLens: {
             overview:
-              'ระบบประเมินและติดตามผลมาตรฐานสาขา พัฒนาด้วยสถาปัตยกรรม React คู่กับ C# .NET API',
+              'ระบบประเมินและคำนวณคะแนนมาตรฐานสาขา พัฒนาด้วย React คู่กับ C# .NET API',
             nodes: [
               {
                 layer: 'Audit UI',
                 tech: 'React Client',
-                description: 'หน้าจอทำแบบประเมินสาขาและแดชบอร์ดติดตามผลการตรวจมาตรฐาน',
+                description: 'หน้าจอทำแบบประเมินและติดตามผลรายสาขา',
               },
               {
                 layer: 'Core API',
                 tech: 'C# .NET',
-                description: 'คำนวณคะแนนตามเกณฑ์มาตรฐานและจัดการสถานะการประเมิน',
+                description: 'คำนวณคะแนนตามเกณฑ์และจัดการสถานะการตรวจ',
               },
               {
                 layer: 'Data Store',
                 tech: 'SQL Server',
-                description: 'จัดเก็บประวัติการประเมิน เกณฑ์คะแนน และรายงานรายสาขา',
+                description: 'จัดเก็บคะแนน KPI และประวัติการประเมินสาขา',
               },
             ],
             engineeringHighlights: [
-              'พัฒนาส่วนคำนวณคะแนนและเกณฑ์การประเมินมาตรฐานสาขาบน C# .NET',
-              'สร้างหน้าจอติดตามสถานะการประเมินด้วย React ที่ช่วยให้ผู้ตรวจสอบใช้งานได้สะดวก',
+              'พัฒนาลอจิกคำนวณคะแนนการประเมินสาขาด้วย C# .NET และสร้างแดชบอร์ดติดตามผลด้วย React',
             ],
           },
         },
@@ -572,87 +561,84 @@ export const portfolioData: Record<Locale, PortfolioData> = {
           title: 'Underwrite Branch',
           subtitle: 'ระบบคัดกรองผู้เอาประกันอัตโนมัติเพื่อประเมินความเสี่ยง',
           category: 'compliance',
-          categoryLabel: 'ระบบพิจารณารับประกัน',
+          categoryLabel: 'พิจารณารับประกัน',
           techStack: ['C# .NET MVC', 'SQL'],
           businessLens: {
             problem:
-              'การคัดกรองข้อมูลสมาชิกผู้เอาประกันแบบ Manual ใช้เวลานานและอาจเกิดความล่าช้าในขั้นตอนการพิจารณารับประกัน (Underwriting)',
+              'การคัดกรองผู้สมัครเอาประกันแบบ Manual ใช้เวลานานและเป็นคอขวดในขั้นตอนพิจารณารับประกัน',
             solution:
-              'ร่วมพัฒนาระบบคัดกรองสมาชิกผู้เอาประกันแบบอัตโนมัติด้วยสถาปัตยกรรม MVC เพื่อช่วยให้การประเมินความเสี่ยงในการรับประกันรวดเร็วขึ้น',
+              'ร่วมพัฒนาระบบคัดกรองผู้เอาประกันอัตโนมัติบนสถาปัตยกรรม ASP.NET MVC',
             impact:
-              'ลดระยะเวลาในกระบวนการคัดกรองเบื้องต้น และช่วยให้การประเมินความเสี่ยง (Risk Assessment) มีความแม่นยำและเป็นระบบมากขึ้น',
+              'ลดเวลาคัดกรองเบื้องต้นและเพิ่มความแม่นยำในการประเมินความเสี่ยง (Underwriting)',
           },
           architectureLens: {
             overview:
-              'พัฒนาด้วยสถาปัตยกรรม ASP.NET MVC ที่ผสานลอจิกการคัดกรองความเสี่ยงเข้ากับฐานข้อมูลผู้เอาประกันโดยตรง',
+              'เว็บแอปพลิเคชัน ASP.NET MVC ผสานลอจิกคัดกรองความเสี่ยงเข้ากับฐานข้อมูลโดยตรง',
             nodes: [
               {
-                layer: 'MVC View & Controller',
+                layer: 'MVC Layer',
                 tech: '.NET MVC',
-                description: 'จัดการ Routing, หน้าจอแสดงผลคัดกรอง และการควบคุม Flow การทำงาน',
+                description: 'จัดการ Routing และหน้าจอผลการคัดกรอง',
               },
               {
-                layer: 'Business Logic',
-                tech: 'Screening Rules Engine',
-                description: 'ประมวลผลเงื่อนไขการคัดกรองผู้เอาประกันและประเมินความเสี่ยงอัตโนมัติ',
+                layer: 'Rules Engine',
+                tech: 'Screening Logic',
+                description: 'ประมวลผลเงื่อนไขความเสี่ยงผู้เอาประกันอัตโนมัติ',
               },
               {
                 layer: 'Data Layer',
                 tech: 'SQL Database',
-                description: 'จัดเก็บข้อมูลผู้สมัครเอาประกันและผลลัพธ์การประเมินความเสี่ยง',
+                description: 'บันทึกข้อมูลผู้เอาประกันและผลการพิจารณา',
               },
             ],
             engineeringHighlights: [
-              'ร่วมพัฒนา Controller และ Business Logic สำหรับระบบคัดกรองความเสี่ยงอัตโนมัติตามรูปแบบ MVC',
-              'ปรับปรุงการดึงข้อมูลเพื่อให้เจ้าหน้าที่ตรวจสอบผลการคัดกรองได้อย่างรวดเร็ว',
+              'ร่วมพัฒนา Controller และลอจิกคัดกรองความเสี่ยงตามรูปแบบ MVC พร้อมปรับจูนคิวรีข้อมูล',
             ],
           },
         },
       ],
     },
     experienceSection: {
-      title: 'ประสบการณ์การทำงาน',
-      subtitle: 'ประสบการณ์พัฒนาระบบ Full-Stack ระดับองค์กรในธุรกิจประกันภัย',
+      title: 'ประสบการณ์ทำงาน',
+      subtitle: 'การพัฒนาระบบระดับองค์กรที่ บมจ. สยามสไมล์ประกันภัย',
       items: [
         {
           id: 'siam-smile-fullstack',
           role: 'Full Stack Developer',
-          company: 'บริษัท สยามสไมล์ประกันภัย จำกัด (มหาชน)',
-          location: 'กรุงเทพมหานคร',
-          period: 'กรกฎาคม 2025 – ปัจจุบัน',
-          type: 'พนักงานประจำ (Full-Time)',
+          company: 'บมจ. สยามสไมล์ประกันภัย (Siam Smile Insurance)',
+          location: 'กรุงเทพฯ',
+          period: 'ก.ค. 2025 – ปัจจุบัน',
+          type: 'Full-Time',
           highlights: [
-            'พัฒนาเว็บแอปพลิเคชันแบบ Full-Stack ครอบคลุมทั้งฝั่ง Frontend (React) และ Backend (C# .NET)',
-            'ดูแลรักษาระบบงานเดิมขององค์กรให้ทำงานได้อย่างมีเสถียรภาพ พร้อมทั้งพัฒนาฟีเจอร์และระบบใหม่ตามความต้องการทางธุรกิจ',
-            'พัฒนาระบบสำคัญขององค์กร อาทิ Customer Portal (LINE LIFF), Branch Service และระบบกลุ่ม Assessment',
+            'พัฒนาและดูแลระบบ Full-Stack ระดับองค์กรทั้งฝั่ง React และ C# .NET',
+            'ส่งมอบระบบสำคัญ ได้แก่ Customer Portal (LINE LIFF), Branch Service และระบบกลุ่ม Assessment',
           ],
         },
         {
           id: 'siam-smile-intern',
-          role: 'Intern Full Stack Developer (นักศึกษาฝึกงาน)',
-          company: 'บริษัท สยามสไมล์ประกันภัย จำกัด (มหาชน)',
-          location: 'กรุงเทพมหานคร',
-          period: 'สิงหาคม 2024 – ธันวาคม 2024',
-          type: 'ฝึกงาน (Internship)',
+          role: 'Intern Full Stack Developer',
+          company: 'บมจ. สยามสไมล์ประกันภัย (Siam Smile Insurance)',
+          location: 'กรุงเทพฯ',
+          period: 'ส.ค. 2024 – ธ.ค. 2024',
+          type: 'Internship',
           highlights: [
-            'พัฒนาเว็บแอปพลิเคชันแบบ Full-Stack ทั้งส่วนติดต่อผู้ใช้ (Frontend) และระบบประมวลผลหลังบ้าน (Backend)',
-            'ทำงานร่วมกับทีมนักพัฒนาโดยปฏิบัติตามมาตรฐานการเขียนโค้ด (Coding Standards) และระเบียบวิธีของโปรเจกต์อย่างเคร่งครัด',
+            'ร่วมพัฒนาเว็บแอปพลิเคชันทั้ง Frontend และ Backend ตามมาตรฐาน Coding Standard ขององค์กร',
           ],
         },
       ],
     },
     educationSection: {
       title: 'การศึกษา',
-      degree: 'วิทยาศาสตรบัณฑิต สาขาวิชาวิทยาการคอมพิวเตอร์ (B.Sc. in Computer Science)',
+      degree: 'วท.บ. วิทยาการคอมพิวเตอร์ (B.Sc. Computer Science)',
       university: 'มหาวิทยาลัยรังสิต (Rangsit University)',
       location: 'ปทุมธานี',
-      graduationDate: 'สำเร็จการศึกษา พฤษภาคม 2025',
-      honors: 'เกียรตินิยมอันดับ 1 (First Class Honors)',
+      graduationDate: 'พ.ค. 2025',
+      honors: 'เกียรตินิยมอันดับ 1',
       gpa: '3.84',
-      courseworkLabel: 'รายวิชาสำคัญที่เกี่ยวข้อง',
+      courseworkLabel: 'รายวิชาสำคัญ',
       coursework: [
         'Object-Oriented Programming (OOP)',
-        'Data Structures and Algorithms',
+        'Data Structures & Algorithms',
         'Software Engineering',
         'System Analysis',
         'Database Systems',
@@ -665,38 +651,34 @@ export const portfolioData: Record<Locale, PortfolioData> = {
       ],
     },
     skillsSection: {
-      title: 'ทักษะทางเทคนิคและความสนใจด้านวิศวกรรม',
-      subtitle: 'เทคโนโลยีที่ใช้ในการพัฒนาระบบจริง และหัวข้อทางวิศวกรรมซอฟต์แวร์ที่กำลังศึกษาต่อยอด',
+      title: 'ทักษะทางเทคนิค',
+      subtitle: 'เทคโนโลยีหลักที่ใช้ทำงานจริงและหัวข้อที่กำลังศึกษาต่อยอด',
       categories: {
         languages: {
-          title: 'ภาษาโปรแกรม (Languages)',
+          title: 'ภาษาโปรแกรม',
           items: ['C#', 'TypeScript', 'JavaScript', 'SQL', 'Java'],
         },
         frameworks: {
-          title: 'เฟรมเวิร์กและรันไทม์ (Frameworks)',
+          title: 'เฟรมเวิร์กและรันไทม์',
           items: ['.NET', 'React', 'Next.js', 'NestJS', 'Express'],
         },
         tools: {
-          title: 'เครื่องมือและโครงสร้างพื้นฐาน (Tools)',
+          title: 'เครื่องมือและ DevOps',
           items: ['Git', 'Docker'],
         },
         interests: {
-          title: 'ความสนใจและการศึกษาต่อยอด (Engineering Interests)',
-          description: 'มุ่งเน้นการศึกษาการเขียนโปรแกรมระดับระบบที่มีประสิทธิภาพสูง และกระบวนการส่งมอบซอฟต์แวร์อัตโนมัติ:',
-          items: [
-            'Systems Programming ด้วยภาษา Rust หรือ Go',
-            'CI/CD (Continuous Integration / Continuous Deployment)',
-          ],
+          title: 'ความสนใจเพิ่มเติม (Exploring)',
+          description: 'กำลังศึกษาต่อยอดด้าน Systems Performance และระบบอัตโนมัติ:',
+          items: ['Systems Programming (Rust / Go)', 'CI/CD Pipelines'],
         },
       },
     },
     contactSection: {
-      title: 'พร้อมร่วมงานและสร้างสรรค์ระบบซอฟต์แวร์คุณภาพ',
-      subtitle: 'สามารถติดต่อเพื่อพูดคุยเกี่ยวกับโอกาสในการทำงานสาย Full Stack Developer / Software Engineer ได้โดยตรง',
+      title: 'พร้อมร่วมงานและพัฒนาระบบที่มีคุณภาพ',
+      subtitle: 'เปิดรับโอกาสในตำแหน่ง Full Stack Developer / Software Engineer',
       copyEmail: 'คัดลอกอีเมล',
-      copied: 'คัดลอกอีเมลเรียบร้อยแล้ว!',
+      copied: 'คัดลอกแล้ว!',
       callPhone: 'โทร 066-112-8806',
     },
   },
 };
-

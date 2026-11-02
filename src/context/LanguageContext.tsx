@@ -9,6 +9,12 @@ interface LanguageContextType {
   data: PortfolioData;
   globalLens: ProjectLens;
   setGlobalLens: (lens: ProjectLens) => void;
+  selectedSkillFilter: string | null;
+  setSelectedSkillFilter: (skill: string | null) => void;
+  commandPaletteOpen: boolean;
+  setCommandPaletteOpen: (open: boolean) => void;
+  resumePreviewOpen: boolean;
+  setResumePreviewOpen: (open: boolean) => void;
 }
 
 const STORAGE_KEY = 'anupat_portfolio_locale';
@@ -29,6 +35,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   });
 
   const [globalLens, setGlobalLensState] = useState<ProjectLens>('business');
+  const [selectedSkillFilter, setSelectedSkillFilterState] = useState<string | null>(null);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState<boolean>(false);
+  const [resumePreviewOpen, setResumePreviewOpen] = useState<boolean>(false);
 
   const setLocale = (nextLocale: Locale) => {
     setLocaleState(nextLocale);
@@ -41,6 +50,21 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const setGlobalLens = (lens: ProjectLens) => {
     setGlobalLensState(lens);
   };
+
+  const setSelectedSkillFilter = (skill: string | null) => {
+    setSelectedSkillFilterState(skill);
+  };
+
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, []);
 
   useEffect(() => {
     try {
@@ -67,6 +91,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     data: portfolioData[locale],
     globalLens,
     setGlobalLens,
+    selectedSkillFilter,
+    setSelectedSkillFilter,
+    commandPaletteOpen,
+    setCommandPaletteOpen,
+    resumePreviewOpen,
+    setResumePreviewOpen,
   };
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
@@ -79,4 +109,3 @@ export const useLanguage = (): LanguageContextType => {
   }
   return context;
 };
-
