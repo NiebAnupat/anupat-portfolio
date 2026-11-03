@@ -1,6 +1,31 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
 
 @layer base {
+  :root {
+    --color-primary: #18181b;
+    --color-on-primary: #ffffff;
+    --color-secondary: #3f3f46;
+    --color-accent: #2563eb;
+    --color-background: #f8fafc;
+    --color-foreground: #0f172a;
+    --color-muted: #e2e8f0;
+    --color-border: #e2e8f0;
+    --color-card: #ffffff;
+  }
+
+  .dark {
+    --color-primary: #ffffff;
+    --color-on-primary: #090d16;
+    --color-secondary: #94a3b8;
+    --color-accent: #3b82f6;
+    --color-background: #090d16;
+    --color-foreground: #f8fafc;
+    --color-muted: #1e293b;
+    --color-border: #1e293b;
+    --color-card: #0f172a;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -10,8 +35,12 @@
     scrollbar-color: #cbd5e1 #f8fafc;
   }
 
+  html.dark {
+    scrollbar-color: #334155 #090d16;
+  }
+
   html[lang="en"] {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
   }
 
@@ -49,9 +78,18 @@
     color: #172554;
   }
 
+  .dark ::selection {
+    background-color: #1e3a8a;
+    color: #93c5fd;
+  }
+
   :focus-visible {
     outline: 2px solid #2563eb;
     outline-offset: 2px;
+  }
+
+  .dark :focus-visible {
+    outline-color: #3b82f6;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -75,11 +113,21 @@
   background-size: 20px 20px;
 }
 
+.dark .bg-dev-dots {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+}
+
 .bg-blueprint-grid {
   background-size: 32px 32px;
   background-image:
     linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+}
+
+.dark .bg-blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(59, 130, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.07) 1px, transparent 1px);
 }
 
 .bg-dark-grid {
@@ -95,7 +143,7 @@
     opacity: 0.7;
   }
   50% {
-    transform: translateX(2px);
+    transform: translateX(3px);
     opacity: 1;
   }
 }
@@ -132,12 +180,25 @@
   background: #f8fafc;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 9999px;
   border: 2px solid #f8fafc;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border: 2px solid #090d16;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }

@@ -12,8 +12,11 @@ import {
   CornerDownLeft,
   Check,
   X,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface CommandAction {
   id: string;
@@ -35,6 +38,7 @@ export const CommandPalette: React.FC = () => {
     setCommandPaletteOpen,
     setResumePreviewOpen,
   } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
@@ -77,6 +81,7 @@ export const CommandPalette: React.FC = () => {
   const actions = useMemo<CommandAction[]>(() => {
     const isEn = locale === 'en';
     const quickGroup = isEn ? 'Quick Actions' : 'คำสั่งด่วน';
+    const appearanceGroup = isEn ? 'Appearance & Theme' : 'การแสดงผล & ธีม';
     const lensGroup = isEn ? 'Architecture & Lens' : 'สลับมุมมองระบบ';
     const projectsGroup = isEn ? 'Jump to System' : 'ไปยังระบบงาน';
 
@@ -86,7 +91,7 @@ export const CommandPalette: React.FC = () => {
         group: quickGroup,
         label: isEn ? 'Preview Resume PDF (In-Browser)' : 'เปิดดูเรซูเม่ PDF บนหน้าเว็บ',
         hint: 'anupat-resume.pdf',
-        icon: <FileText className="w-4 h-4 text-emerald-600" />,
+        icon: <FileText className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />,
         onSelect: () => {
           closePalette();
           setResumePreviewOpen(true);
@@ -97,7 +102,7 @@ export const CommandPalette: React.FC = () => {
         group: quickGroup,
         label: isEn ? 'Download Resume PDF' : 'ดาวน์โหลดไฟล์เรซูเม่ PDF',
         hint: '.pdf',
-        icon: <Download className="w-4 h-4 text-blue-600" />,
+        icon: <Download className="w-4 h-4 text-blue-600 dark:text-blue-400" />,
         onSelect: () => {
           const link = document.createElement('a');
           link.href = `${import.meta.env.BASE_URL}anupat-resume.pdf`;
@@ -111,7 +116,7 @@ export const CommandPalette: React.FC = () => {
         group: quickGroup,
         label: isEn ? 'Copy Email Address' : 'คัดลอกอีเมล (anupat.kae@gmail.com)',
         hint: data.hero.email,
-        icon: <Copy className="w-4 h-4 text-blue-600" />,
+        icon: <Copy className="w-4 h-4 text-blue-600 dark:text-blue-400" />,
         onSelect: () =>
           copyText(
             data.hero.email,
@@ -119,11 +124,34 @@ export const CommandPalette: React.FC = () => {
           ),
       },
       {
+        id: 'toggle-theme',
+        group: appearanceGroup,
+        label:
+          theme === 'dark'
+            ? isEn
+              ? 'Switch to Light Mode'
+              : 'เปลี่ยนเป็นธีมสว่าง (Light Mode)'
+            : isEn
+              ? 'Switch to Dark Mode'
+              : 'เปลี่ยนเป็นธีมมืด (Dark Mode)',
+        hint: theme === 'dark' ? 'Light' : 'Dark',
+        icon:
+          theme === 'dark' ? (
+            <Sun className="w-4 h-4 text-amber-400" />
+          ) : (
+            <Moon className="w-4 h-4 text-slate-700 dark:text-slate-300" />
+          ),
+        onSelect: () => {
+          toggleTheme();
+          closePalette();
+        },
+      },
+      {
         id: 'toggle-lang',
-        group: quickGroup,
+        group: appearanceGroup,
         label: isEn ? 'Switch Language to Thai (ภาษาไทย)' : 'เปลี่ยนภาษาเป็น English (EN)',
         hint: isEn ? 'TH' : 'EN',
-        icon: <Globe className="w-4 h-4 text-blue-600" />,
+        icon: <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400" />,
         onSelect: () => {
           toggleLocale();
           closePalette();
@@ -136,7 +164,7 @@ export const CommandPalette: React.FC = () => {
           ? 'Switch All Projects to System Architecture View'
           : 'สลับทุกระบบเป็นมุมมองสถาปัตยกรรม (Tech Lead)',
         hint: 'Architecture',
-        icon: <Network className="w-4 h-4 text-indigo-600" />,
+        icon: <Network className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />,
         onSelect: () => {
           setGlobalLens('architecture');
           scrollToElement('#projects');
@@ -149,7 +177,7 @@ export const CommandPalette: React.FC = () => {
           ? 'Switch All Projects to Business Impact View'
           : 'สลับทุกระบบเป็นมุมมองผลลัพธ์ธุรกิจ (HR)',
         hint: 'Business',
-        icon: <Briefcase className="w-4 h-4 text-blue-600" />,
+        icon: <Briefcase className="w-4 h-4 text-blue-600 dark:text-blue-400" />,
         onSelect: () => {
           setGlobalLens('business');
           scrollToElement('#projects');
@@ -163,7 +191,7 @@ export const CommandPalette: React.FC = () => {
         group: projectsGroup,
         label: `${proj.title} — ${proj.subtitle}`,
         hint: `sys/${proj.id}`,
-        icon: <FolderGit2 className="w-4 h-4 text-indigo-600" />,
+        icon: <FolderGit2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />,
         onSelect: () => {
           setSelectedSkillFilter(null);
           scrollToElement(`#project-${proj.id}`);
@@ -172,7 +200,7 @@ export const CommandPalette: React.FC = () => {
     });
 
     return list;
-  }, [locale, data, setGlobalLens, setSelectedSkillFilter, setResumePreviewOpen, toggleLocale]);
+  }, [locale, data, theme, toggleTheme, setGlobalLens, setSelectedSkillFilter, setResumePreviewOpen, toggleLocale]);
 
   const filteredActions = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -228,19 +256,19 @@ export const CommandPalette: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-slate-900/50 backdrop-blur-xs print:hidden"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-xs print:hidden"
       onClick={closePalette}
       role="dialog"
       aria-modal="true"
       aria-label="Command Palette"
     >
       <div
-        className="w-full max-w-xl bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden"
+        className="w-full max-w-xl bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Search Input Bar */}
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-200 bg-slate-50/70">
-          <Search className="w-4 h-4 text-blue-600 shrink-0" />
+        <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/70">
+          <Search className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -248,15 +276,15 @@ export const CommandPalette: React.FC = () => {
             onChange={(e) => setQuery(e.target.value)}
             placeholder={
               locale === 'en'
-                ? 'Type a command or search projects... (e.g. architecture, resume, LIFF)'
-                : 'พิมพ์คำสั่งหรือค้นหาระบบ... (เช่น สถาปัตยกรรม, เรซูเม่, LIFF)'
+                ? 'Type a command or search systems... (e.g. architecture, dark mode, LIFF)'
+                : 'พิมพ์คำสั่งหรือค้นหาระบบ... (เช่น สถาปัตยกรรม, ธีมมืด, LIFF)'
             }
-            className="w-full bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
+            className="w-full bg-transparent text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none"
           />
           <button
             type="button"
             onClick={closePalette}
-            className="p-1 rounded-md text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 cursor-pointer"
+            className="p-1 rounded-md text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 cursor-pointer"
             aria-label="Close command palette"
           >
             <X className="w-4 h-4" />
@@ -265,7 +293,7 @@ export const CommandPalette: React.FC = () => {
 
         {/* Toast confirmation banner if copy triggered */}
         {toastMessage && (
-          <div className="px-4 py-2 bg-emerald-50 border-b border-emerald-200 flex items-center gap-2 text-xs font-mono font-semibold text-emerald-700">
+          <div className="px-4 py-2 bg-emerald-50 dark:bg-emerald-950/80 border-b border-emerald-200 dark:border-emerald-800 flex items-center gap-2 text-xs font-mono font-semibold text-emerald-700 dark:text-emerald-300">
             <Check className="w-4 h-4" />
             <span>{toastMessage}</span>
           </div>
@@ -274,7 +302,7 @@ export const CommandPalette: React.FC = () => {
         {/* Action List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
           {filteredActions.length === 0 ? (
-            <div className="py-8 text-center text-xs font-mono text-slate-500">
+            <div className="py-8 text-center text-xs font-mono text-slate-500 dark:text-slate-400">
               {locale === 'en' ? 'No matching commands found.' : 'ไม่พบคำสั่งที่ค้นหา'}
             </div>
           ) : (
@@ -288,8 +316,8 @@ export const CommandPalette: React.FC = () => {
                   onClick={action.onSelect}
                   className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl text-left text-xs sm:text-sm transition-colors cursor-pointer ${
                     isSelected
-                      ? 'bg-blue-50/90 text-blue-950 font-semibold border border-blue-200/80'
-                      : 'text-slate-700 hover:bg-slate-100/70 border border-transparent'
+                      ? 'bg-blue-50/90 dark:bg-blue-950/70 text-blue-950 dark:text-blue-200 font-semibold border border-blue-200/80 dark:border-blue-900'
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 border border-transparent'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
@@ -298,11 +326,11 @@ export const CommandPalette: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     {action.hint && (
-                      <span className="hidden sm:inline-block font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">
+                      <span className="hidden sm:inline-block font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
                         {action.hint}
                       </span>
                     )}
-                    {isSelected && <CornerDownLeft className="w-3.5 h-3.5 text-blue-600" />}
+                    {isSelected && <CornerDownLeft className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />}
                   </div>
                 </button>
               );
@@ -311,12 +339,12 @@ export const CommandPalette: React.FC = () => {
         </div>
 
         {/* Footer Keyboard Hints */}
-        <div className="px-4 py-2 bg-slate-900 text-slate-300 flex items-center justify-between text-[11px] font-mono">
+        <div className="px-4 py-2 bg-slate-900 dark:bg-slate-950 text-slate-300 flex items-center justify-between text-[11px] font-mono border-t border-slate-800">
           <div className="flex items-center gap-2">
             <Terminal className="w-3.5 h-3.5 text-emerald-400" />
             <span>COMMAND_PALETTE</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 text-slate-400">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>ESC Close</span>
@@ -326,4 +354,3 @@ export const CommandPalette: React.FC = () => {
     </div>
   );
 };
-

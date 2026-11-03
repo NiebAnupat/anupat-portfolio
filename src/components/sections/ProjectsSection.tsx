@@ -96,33 +96,33 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section
       id="projects"
-      className="scroll-mt-20 py-12 sm:py-16 border-b border-slate-200 bg-slate-50"
+      className="scroll-mt-20 py-12 sm:py-16 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#090d16] transition-colors"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Compact Header + Controls Bar */}
+        {/* Header + Global Lens Switcher Bar */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-blue-600 mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 mb-1">
               <Terminal className="w-3.5 h-3.5" />
               <span>02 // PRODUCTION_SYSTEMS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
               {projectsSection.title}
             </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-[60ch]">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-[60ch]">
               {projectsSection.subtitle}
             </p>
           </div>
 
           {/* Global Lens Switcher Panel */}
-          <div className="inline-flex items-center gap-2 bg-white p-1.5 rounded-xl border border-slate-200 shadow-2xs self-start lg:self-auto shrink-0 print:hidden">
-            <span className="text-xs font-mono font-medium text-slate-600 pl-2">
+          <div className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs self-start lg:self-auto shrink-0 print:hidden">
+            <span className="text-xs font-mono font-medium text-slate-600 dark:text-slate-400 pl-2">
               {projectsSection.lensLabel}
             </span>
             <div
               role="group"
               aria-label={projectsSection.lensLabel}
-              className="inline-flex items-center gap-1 bg-slate-100/80 p-1 rounded-lg border border-slate-200/80"
+              className="inline-flex items-center gap-1 bg-slate-100/80 dark:bg-slate-800/80 p-1 rounded-lg border border-slate-200/80 dark:border-slate-700/80"
             >
               <button
                 type="button"
@@ -130,10 +130,10 @@ export const ProjectsSection: React.FC = () => {
                 aria-pressed={
                   globalLens === 'business' && Object.keys(cardLensOverrides).length === 0
                 }
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
-                  globalLens === 'business'
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer active:scale-95 ${
+                  globalLens === 'business' && Object.keys(cardLensOverrides).length === 0
                     ? 'bg-blue-600 text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-700/60'
                 }`}
               >
                 <Briefcase className="w-3.5 h-3.5 shrink-0" />
@@ -146,10 +146,10 @@ export const ProjectsSection: React.FC = () => {
                 aria-pressed={
                   globalLens === 'architecture' && Object.keys(cardLensOverrides).length === 0
                 }
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer ${
-                  globalLens === 'architecture'
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-all cursor-pointer active:scale-95 ${
+                  globalLens === 'architecture' && Object.keys(cardLensOverrides).length === 0
                     ? 'bg-indigo-600 text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-700/60'
                 }`}
               >
                 <Network className="w-3.5 h-3.5 shrink-0" />
@@ -161,7 +161,7 @@ export const ProjectsSection: React.FC = () => {
 
         {/* Category Filter Pills + Active Skill Filter Badge */}
         <div className="flex flex-wrap items-center gap-1.5 mb-6 print:hidden">
-          <div className="inline-flex items-center gap-1 text-xs font-mono text-slate-600 mr-1">
+          <div className="inline-flex items-center gap-1 text-xs font-mono text-slate-500 dark:text-slate-400 mr-1">
             <Filter className="w-3.5 h-3.5" />
           </div>
           {categories.map((cat) => {
@@ -172,18 +172,18 @@ export const ProjectsSection: React.FC = () => {
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
                 aria-pressed={isActive}
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition-all cursor-pointer active:scale-95 ${
                   isActive
-                    ? 'bg-slate-900 text-white shadow-xs'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900'
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-semibold shadow-xs'
+                    : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 <span>{cat.label}</span>
                 <span
                   className={`font-mono text-xs px-1.5 rounded-full tabular-nums ${
                     isActive
-                      ? 'bg-slate-800 text-emerald-400'
-                      : 'bg-slate-100 text-slate-600'
+                      ? 'bg-slate-800 dark:bg-slate-200 text-emerald-400 dark:text-emerald-700 font-bold'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   {cat.count}
@@ -196,7 +196,7 @@ export const ProjectsSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedSkillFilter(null)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-blue-600 text-white shadow-xs hover:bg-blue-700 transition-colors cursor-pointer ml-1"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-blue-600 text-white shadow-xs hover:bg-blue-700 transition-colors cursor-pointer ml-1 active:scale-95"
             >
               <span>tech: {selectedSkillFilter}</span>
               <X className="w-3.5 h-3.5" />
@@ -206,8 +206,8 @@ export const ProjectsSection: React.FC = () => {
 
         {/* Bento Grid of Project Cards */}
         {filteredProjects.length === 0 ? (
-          <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
-            <p className="text-sm font-mono text-slate-600 mb-3">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 sm:p-12 text-center shadow-xs">
+            <p className="text-sm font-mono text-slate-600 dark:text-slate-400 mb-4">
               {locale === 'en'
                 ? `No production systems directly tagged with "${selectedSkillFilter}".`
                 : `ไม่พบระบบที่ติดป้ายกำกับ "${selectedSkillFilter}" โดยตรง`}
@@ -218,7 +218,7 @@ export const ProjectsSection: React.FC = () => {
                 setSelectedSkillFilter(null);
                 setActiveCategory('all');
               }}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-white hover:bg-slate-800 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-slate-900 dark:bg-blue-600 text-white hover:bg-slate-800 dark:hover:bg-blue-500 cursor-pointer transition-all active:scale-95 shadow-xs"
             >
               <span>{locale === 'en' ? 'Reset Filters' : 'ล้างตัวกรอง'}</span>
             </button>

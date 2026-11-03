@@ -22,18 +22,18 @@ export const ResumeModal: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 backdrop-blur-xs print:hidden"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 dark:bg-black/80 backdrop-blur-xs print:hidden"
       onClick={() => setResumePreviewOpen(false)}
       role="dialog"
       aria-modal="true"
       aria-label="Resume PDF Preview"
     >
       <div
-        className="w-full max-w-4xl h-[85vh] bg-slate-900 rounded-2xl border border-slate-700 shadow-2xl flex flex-col overflow-hidden"
+        className="w-full max-w-4xl h-[85vh] bg-slate-900 dark:bg-slate-950 rounded-2xl border border-slate-700 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* IDE Style Top Bar */}
-        <div className="px-4 py-2.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between gap-2">
+        <div className="px-4 py-2.5 bg-slate-950 dark:bg-black/60 border-b border-slate-800 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="flex items-center gap-1.5" aria-hidden="true">
               <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
@@ -61,7 +61,7 @@ export const ResumeModal: React.FC = () => {
             <a
               href={pdfUrl}
               download="Anupat-Kaewmee-Resume.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-semibold text-white bg-blue-600 hover:bg-blue-500 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-semibold text-white bg-blue-600 hover:bg-blue-500 transition-colors active:scale-95 shadow-xs"
             >
               <Download className="w-3.5 h-3.5" />
               <span>{locale === 'en' ? 'Download' : 'ดาวน์โหลด'}</span>
@@ -79,7 +79,7 @@ export const ResumeModal: React.FC = () => {
         </div>
 
         {/* Embedded PDF Viewer */}
-        <div className="flex-1 bg-slate-800">
+        <div className="flex-1 bg-slate-800 dark:bg-slate-900">
           <iframe
             src={pdfUrl}
             title="Anupat Kaewmee Resume PDF"
@@ -90,4 +90,3 @@ export const ResumeModal: React.FC = () => {
     </div>
   );
 };
-

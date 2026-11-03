@@ -8,8 +8,11 @@ import {
   ChevronRight,
   Search,
   Eye,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 import { Locale } from '../../types/portfolio';
 
 export const Navbar: React.FC = () => {
@@ -20,6 +23,8 @@ export const Navbar: React.FC = () => {
     setCommandPaletteOpen,
     setResumePreviewOpen,
   } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('about');
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +39,7 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 12);
+      setScrolled(window.scrollY > 16);
 
       const sections = ['about', 'projects', 'experience', 'education', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 140;
@@ -76,7 +81,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full pt-3 sm:pt-4 px-3 sm:px-6 lg:px-8 pointer-events-none print:hidden">
-      {/* Skip to Main Content Link */}
+      {/* Skip to Main Content Link for Accessibility */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:pointer-events-auto focus:absolute focus:top-4 focus:left-6 focus:z-50 focus:px-4 focus:py-2 focus:rounded-full focus:bg-blue-600 focus:text-white focus:text-xs focus:font-mono focus:font-semibold focus:shadow-md"
@@ -87,27 +92,27 @@ export const Navbar: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         {/* Floating Glass Pill Container */}
         <div
-          className={`pointer-events-auto w-full flex items-center justify-between gap-2 lg:gap-2.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full transition-all duration-200 ${
+          className={`pointer-events-auto w-full flex items-center justify-between gap-2 lg:gap-2.5 px-3 py-1.5 sm:py-2 rounded-full transition-all duration-200 ${
             scrolled
-              ? 'bg-white/85 backdrop-blur-xl backdrop-saturate-150 border border-slate-200/90 shadow-[0_8px_30px_rgb(15,23,42,0.07),0_1px_0_0_rgba(255,255,255,0.9)_inset]'
-              : 'bg-white/75 backdrop-blur-lg backdrop-saturate-150 border border-slate-200/80 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05),0_1px_0_0_rgba(255,255,255,0.85)_inset]'
+              ? 'bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl backdrop-saturate-150 border border-slate-200/90 dark:border-slate-800/90 shadow-[0_8px_30px_rgb(15,23,42,0.07)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)]'
+              : 'bg-white/75 dark:bg-slate-900/75 backdrop-blur-lg backdrop-saturate-150 border border-slate-200/80 dark:border-slate-800/80 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] dark:shadow-[0_4px_20px_-2px_rgba(0,0,0,0.4)]'
           }`}
         >
-          {/* Left: Developer Terminal Brand Identity */}
+          {/* Left: Developer Brand Identity */}
           <a
             href="#about"
             onClick={closeMobileMenu}
             className="group flex items-center gap-2 rounded-full pl-1 pr-2 py-0.5 min-w-0 shrink-0 focus-visible:outline-2 focus-visible:outline-blue-600"
           >
-            <div className="w-8 h-8 rounded-full bg-slate-900 text-emerald-400 flex items-center justify-center font-mono text-xs font-bold tracking-tight group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-xs shrink-0">
+            <div className="w-8 h-8 rounded-full bg-slate-900 dark:bg-slate-800 text-emerald-400 flex items-center justify-center font-mono text-xs font-bold tracking-tight group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-xs shrink-0 border border-slate-800 dark:border-slate-700">
               <Terminal className="w-4 h-4" />
             </div>
             <div className="flex items-center gap-2 min-w-0">
-              <span className="font-semibold text-slate-900 tracking-tight text-sm sm:text-base whitespace-nowrap group-hover:text-blue-600 transition-colors">
+              <span className="font-semibold text-slate-900 dark:text-white tracking-tight text-sm sm:text-base whitespace-nowrap group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {data.hero.name}
               </span>
-              <span className="hidden xl:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-mono font-medium bg-slate-900 text-slate-200 whitespace-nowrap">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="hidden xl:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-mono font-medium bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>~/fullstack</span>
               </span>
             </div>
@@ -116,7 +121,7 @@ export const Navbar: React.FC = () => {
           {/* Center: Inner Recessed Glass Pill Track for Navigation (Desktop lg+) */}
           <nav
             aria-label="Main Navigation"
-            className="hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-slate-100/80 border border-slate-200/70 shadow-[inset_0_1px_2px_rgba(15,23,42,0.03)] min-w-0"
+            className="hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 shadow-inner min-w-0"
           >
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
@@ -125,15 +130,17 @@ export const Navbar: React.FC = () => {
                   key={item.id}
                   href={item.href}
                   aria-current={isActive ? 'location' : undefined}
-                  className={`inline-flex items-center gap-1 px-2.5 xl:px-3 py-1 rounded-full text-xs xl:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs xl:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                     isActive
-                      ? 'bg-white text-blue-600 font-semibold shadow-xs border border-slate-200/80'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/60 border border-transparent'
+                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 font-semibold shadow-xs border border-slate-200/80 dark:border-slate-600'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-white/60 dark:hover:bg-slate-700/50 border border-transparent'
                   }`}
                 >
                   <span
                     className={`font-mono text-[10px] ${
-                      isActive ? 'text-blue-500' : 'text-slate-400'
+                      isActive
+                        ? 'text-blue-500 dark:text-blue-300'
+                        : 'text-slate-400 dark:text-slate-500'
                     }`}
                   >
                     {item.cmd}
@@ -144,14 +151,14 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right: Command Palette Trigger, Language Switcher Pill, Resume Preview/Download & Contact CTA */}
+          {/* Right: Quick Command, Language, Theme, Resume & Contact */}
           <div className="flex items-center gap-1.5 shrink-0">
             {/* Command Palette Shortcut Button (Ctrl+K / ⌘K) */}
             <button
               type="button"
               onClick={() => setCommandPaletteOpen(true)}
-              title={locale === 'en' ? 'Open Command Palette (Ctrl+K)' : 'เปิดเมนูคำสั่งด่วน (Ctrl+K)'}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono text-slate-600 bg-slate-100/80 hover:bg-white hover:text-blue-600 border border-slate-200/80 transition-all cursor-pointer"
+              title={locale === 'en' ? 'Open Command Palette (Ctrl+K / ⌘K)' : 'เปิดเมนูคำสั่งด่วน (Ctrl+K)'}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-mono text-slate-600 dark:text-slate-300 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-200/80 dark:border-slate-700/80 transition-all cursor-pointer"
             >
               <Search className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline text-[11px] font-semibold">⌘K</span>
@@ -161,7 +168,7 @@ export const Navbar: React.FC = () => {
             <div
               role="group"
               aria-label="Language switcher"
-              className="inline-flex items-center p-0.5 rounded-full bg-slate-100/80 border border-slate-200/80"
+              className="inline-flex items-center p-0.5 rounded-full bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80"
             >
               <button
                 type="button"
@@ -169,8 +176,8 @@ export const Navbar: React.FC = () => {
                 aria-pressed={locale === 'th'}
                 className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer ${
                   locale === 'th'
-                    ? 'bg-white text-blue-600 shadow-xs border border-slate-200/80'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs border border-slate-200/80 dark:border-slate-600'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 TH
@@ -181,29 +188,52 @@ export const Navbar: React.FC = () => {
                 aria-pressed={locale === 'en'}
                 className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer ${
                   locale === 'en'
-                    ? 'bg-white text-blue-600 shadow-xs border border-slate-200/80'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs border border-slate-200/80 dark:border-slate-600'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 EN
               </button>
             </div>
 
+            {/* Theme Toggle Button (Light / Dark) */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              title={
+                theme === 'dark'
+                  ? locale === 'en'
+                    ? 'Switch to Light Mode'
+                    : 'เปลี่ยนเป็นธีมสว่าง'
+                  : locale === 'en'
+                    ? 'Switch to Dark Mode'
+                    : 'เปลี่ยนเป็นธีมมืด'
+              }
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="p-1.5 sm:p-2 rounded-full text-slate-600 dark:text-slate-300 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 hover:text-amber-500 dark:hover:text-amber-400 border border-slate-200/80 dark:border-slate-700/80 transition-all cursor-pointer"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-700" />
+              )}
+            </button>
+
             {/* Resume Preview Button (Desktop) */}
             <button
               type="button"
               onClick={() => setResumePreviewOpen(true)}
               title={locale === 'en' ? 'Preview Resume PDF' : 'เปิดดูเรซูเม่ PDF'}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap text-slate-700 bg-white/90 border border-slate-200/90 hover:border-blue-400 hover:text-blue-600 transition-all shadow-xs cursor-pointer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap text-slate-700 dark:text-slate-200 bg-white/90 dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-xs cursor-pointer active:scale-95"
             >
-              <Eye className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <Eye className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
               <span>{data.nav.downloadResume}</span>
             </button>
 
             {/* Primary Contact CTA Pill */}
             <a
               href="#contact"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-xs"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 transition-colors shadow-xs active:scale-95"
             >
               <Mail className="w-3.5 h-3.5 shrink-0" />
               <span>{data.nav.contact}</span>
@@ -215,7 +245,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-slate-200/80 transition-colors cursor-pointer"
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
@@ -224,8 +254,8 @@ export const Navbar: React.FC = () => {
 
         {/* Collapsible Floating Glass Drawer (< 1024px) */}
         {mobileMenuOpen && (
-          <div className="pointer-events-auto lg:hidden mt-2 rounded-2xl bg-white/90 backdrop-blur-xl backdrop-saturate-150 border border-slate-200/90 p-3.5 shadow-[0_12px_32px_rgba(15,23,42,0.08)]">
-            <div className="mb-2.5 px-3 py-1.5 rounded-full bg-slate-900 text-slate-200 flex items-center justify-between">
+          <div className="pointer-events-auto lg:hidden mt-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl backdrop-saturate-150 border border-slate-200/90 dark:border-slate-800 p-3.5 shadow-[0_12px_32px_rgba(15,23,42,0.12)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.6)]">
+            <div className="mb-2.5 px-3 py-1.5 rounded-full bg-slate-900 dark:bg-slate-800 text-slate-200 flex items-center justify-between border border-slate-800 dark:border-slate-700">
               <span className="text-xs font-mono text-emerald-400">$ whoami</span>
               <span className="text-xs font-mono font-medium text-white">.NET &amp; React Dev</span>
             </div>
@@ -240,30 +270,30 @@ export const Navbar: React.FC = () => {
                     aria-current={isActive ? 'location' : undefined}
                     className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                       isActive
-                        ? 'bg-blue-50/90 text-blue-600 font-semibold border border-blue-200/60'
-                        : 'text-slate-700 hover:bg-slate-100/70 hover:text-slate-900'
+                        ? 'bg-blue-50/90 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-semibold border border-blue-200/60 dark:border-blue-800/60'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      <span className="font-mono text-xs text-slate-400">{item.cmd}.</span>
+                      <span className="font-mono text-xs text-slate-400 dark:text-slate-500">{item.cmd}.</span>
                       <span>{item.label}</span>
                     </span>
-                    <ChevronRight className="w-4 h-4 text-slate-500" />
+                    <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-500" />
                   </a>
                 );
               })}
             </nav>
 
-            <div className="mt-3.5 pt-3 border-t border-slate-200/80 flex flex-col sm:flex-row gap-2">
+            <div className="mt-3.5 pt-3 border-t border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row gap-2">
               <button
                 type="button"
                 onClick={() => {
                   closeMobileMenu();
                   setResumePreviewOpen(true);
                 }}
-                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium text-slate-800 bg-slate-100/80 border border-slate-200 hover:bg-slate-200/70 transition-colors cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium text-slate-800 dark:text-slate-200 bg-slate-100/80 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-200/70 dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
-                <Eye className="w-4 h-4 text-blue-600" />
+                <Eye className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 <span>{locale === 'en' ? 'Preview Resume' : 'เปิดดูเรซูเม่'}</span>
               </button>
               <a
@@ -272,9 +302,9 @@ export const Navbar: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
-                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium text-slate-800 bg-slate-100/80 border border-slate-200 hover:bg-slate-200/70 transition-colors"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium text-slate-800 dark:text-slate-200 bg-slate-100/80 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-200/70 dark:hover:bg-slate-700 transition-colors"
               >
-                <Download className="w-4 h-4 text-slate-600" />
+                <Download className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                 <span>{data.nav.downloadResume}</span>
               </a>
               <a
